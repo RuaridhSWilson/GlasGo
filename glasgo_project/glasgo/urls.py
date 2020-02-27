@@ -5,5 +5,5 @@ from glasgo import views
 app_name = "glasgo"
 
 urlpatterns = [
-    path("", views.TestView.as_view(), name="test")
+    path("", views.TestView.as_view(), name="test"),
 ]
