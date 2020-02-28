@@ -28,7 +28,8 @@ SECRET_KEY = "8wmli)e2le=n-w%71oevmx8eb+r(@3%ul2(#3z4ek(5^v1h6&#"
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+# If hosting on PythonAnywhere need to add hostname
+ALLOWED_HOSTS = ['totem37.pythonanywhere.com',]
 
 
 # Application definition
