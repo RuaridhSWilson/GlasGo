@@ -8,10 +8,6 @@ from glasgo.forms import AttractionForm
 from glasgo.models import Attraction
 
 
-def get_top_ten():
-    return Attraction.objects.order_by("-score")[:10]
-
-
 class TestView(View):
     def get(self, request):
         return render(request, "glasgo/test.html")
@@ -19,39 +15,35 @@ class TestView(View):
 
 class HomeView(View):
     def get(self, request):
-        context = {}
-        context["attractions"] = Attraction.objects.order_by("added")
-        context["top_ten"] = get_top_ten()
-
-        return render(request, "glasgo/home.html", context=context)
+        return render(
+            request,
+            "glasgo/home.html",
+            context={"attractions": Attraction.objects.order_by("added")},
+        )
 
 
 class AboutView(View):
     def get(self, request):
-        render(request, "glasgo/about.html", {"top_ten": get_top_ten()})
+        render(request, "glasgo/about.html")
 
 
 class AttractionView(View):
     def get(self, request, slug):
-        context = {}
         try:
             attraction = Attraction.objects.get(slug=slug)
-            context["attraction"] = attraction
         except Attraction.DoesNotExist:
-            context["attraction"] = None
+            attraction = None
 
-        context["top_ten"] = get_top_ten()
-
-        return render(request, "glasgo/attraction.html", context=context)
+        return render(
+            request, "glasgo/attraction.html", context={"attraction": attraction}
+        )
 
 
 class AddAttractionView(View):
     @method_decorator(login_required)
     def get(self, request):
         return render(
-            request,
-            "glasgo/add_attraction.html",
-            context={"form": AttractionForm(), "top_ten": get_top_ten()},
+            request, "glasgo/add_attraction.html", context={"form": AttractionForm()},
         )
 
     @method_decorator(login_required)
@@ -67,5 +59,5 @@ class AddAttractionView(View):
             return render(
                 request,
                 "glasgo/add_attraction.html",
-                context={"form": AttractionForm(), "top_ten": get_top_ten()},
+                context={"form": AttractionForm()},
             )

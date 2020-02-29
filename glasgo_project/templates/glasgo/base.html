@@ -14,6 +14,19 @@
 </head>
 <body>
 
+<!-- Sidebar for displaying top ten attractions -->
+<!-- TODO: bootstrap this -->
+<div>
+    {% block top_ten_block %}
+        {% get_top_ten %}
+    {% endblock %}
+</div>
+
+<div>
+    {% block body_block %}{% endblock %}
+</div>
+
+
 
 <!-- Bootstrap JS -->
 <script src="{% static 'js/jquery-3.4.1.min.js' %}" crossorigin="anonymous"></script>
