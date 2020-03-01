@@ -7,7 +7,7 @@ from django.views import View
 from glasgo.forms import AttractionForm
 from glasgo.models import Attraction
 
-
+# Home view
 class HomeView(View):
     def get(self, request):
         return render(
