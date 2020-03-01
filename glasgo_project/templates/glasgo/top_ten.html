@@ -1,0 +1,11 @@
+<ul>
+    {% if top_ten %}
+        {% for attraction in top_ten %}
+            <li>
+                <a href="{% url 'glasgo:attraction' attraction.slug %}"></a>
+            </li>
+        {% endfor %}
+    {% else %}
+        <li>No attractions have been added yet!</li>
+    {% endif %}
+</ul>

@@ -1,0 +1,10 @@
+{% extends "glasgo/base.html" %}
+{% load static %}
+
+{% block body_block %}
+    <form role="form" method="post" action="{% url 'glasgo:add' %}" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Submit</button>
+    </form>
+{% endblock %}

@@ -21,7 +21,7 @@ from django.conf.urls.static import static
 from glasgo import views
 
 urlpatterns = [
-    path("", views.TestView.as_view(), name="test"),
+    path("", views.HomeView.as_view(), name="home"),
     path("glasgo/", include("glasgo.urls")),
     path("accounts/", include("registration.backends.simple.urls")),
     path("admin/", admin.site.urls),
