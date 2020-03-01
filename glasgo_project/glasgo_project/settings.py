@@ -29,7 +29,10 @@ SECRET_KEY = "8wmli)e2le=n-w%71oevmx8eb+r(@3%ul2(#3z4ek(5^v1h6&#"
 DEBUG = True
 
 # If hosting on PythonAnywhere need to add hostname
-ALLOWED_HOSTS = ['totem37.pythonanywhere.com',]
+ALLOWED_HOSTS = [
+    "totem37.pythonanywhere.com",
+    "127.0.0.1",
+]
 
 
 # Application definition

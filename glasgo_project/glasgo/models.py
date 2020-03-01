@@ -1,6 +1,12 @@
+import os
+
 from django.db import models
 from django.template.defaultfilters import slugify
 from django.contrib.auth.models import User
+
+
+def image_path(instance, filename):
+    return os.path.join("attractions", instance.title, filename)
 
 
 class Tag(models.Model):
@@ -24,8 +30,8 @@ class Attraction(models.Model):
     title = models.CharField(max_length=TITLE_MAX_LENGTH, unique=True)
     slug = models.SlugField(unique=True)
 
-    link = models.URLField(blank=True)
-    image = models.ImageField(upload_to="attraction_images")
+    link = models.URLField(blank=True, null=True)
+    image = models.ImageField(upload_to=image_path)
 
     description = models.TextField()
     location = models.TextField()
@@ -37,7 +43,7 @@ class Attraction(models.Model):
         ("EX", "Expensive"),
     ]
     price_range = models.CharField(
-        max_length=2, choices=PRICE_RANGE_CHOICES, blank=True
+        max_length=2, choices=PRICE_RANGE_CHOICES, blank=True, null=True
     )
 
     family_friendly = models.BooleanField(default=False)
@@ -45,8 +51,8 @@ class Attraction(models.Model):
     parking = models.BooleanField(default=False)
     multi_language = models.BooleanField(default=False)
 
-    starts = models.DateTimeField(blank=True)
-    ends = models.DateTimeField(blank=True)
+    starts = models.DateTimeField(blank=True, null=True)
+    ends = models.DateTimeField(blank=True, null=True)
 
     added = models.DateTimeField(auto_now_add=True)
 

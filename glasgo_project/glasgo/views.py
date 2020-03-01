@@ -8,11 +8,6 @@ from glasgo.forms import AttractionForm
 from glasgo.models import Attraction
 
 
-class TestView(View):
-    def get(self, request):
-        return render(request, "glasgo/test.html")
-
-
 class HomeView(View):
     def get(self, request):
         return render(
@@ -24,7 +19,7 @@ class HomeView(View):
 
 class AboutView(View):
     def get(self, request):
-        render(request, "glasgo/about.html")
+        return render(request, "glasgo/about.html")
 
 
 class AttractionView(View):
