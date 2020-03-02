@@ -75,9 +75,9 @@ class Attraction(models.Model):
             "Parking": self.parking,
             "Multi-language": self.multi_language
         }
-        for tag in access_tags:
-            tag = Tag.objects.get(name=tag[0])
-            if tag[1]:
+        for name, condition in access_tags.items():
+            tag = Tag.objects.get(name=name)
+            if condition:
                 self.tags.add(tag)
             else:
                 self.tags.remove(tag)
@@ -85,9 +85,13 @@ class Attraction(models.Model):
     # Override
     def save(self, *args, **kwargs):
         self.slug = slugify(self.title)
-        self.add_price_tag()
-        self.add_access_tags()
+        try:
+            self.add_price_tag()
+            self.add_access_tags()
+        except (Attraction.DoesNotExist, ValueError) as e:
+            pass
         super(Attraction, self).save(*args, **kwargs)
+
 
     def __str__(self):
         return self.title

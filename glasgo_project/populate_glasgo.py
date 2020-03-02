@@ -10,7 +10,8 @@ import urllib.request
 from urllib.parse import urlparse
 
 django.setup()
-from glasgo.models import Attraction, Tag
+from django.contrib.auth.models import User
+from glasgo.models import Attraction, Tag, Vote
 from glasgo_project import settings
 
 
@@ -130,9 +131,21 @@ def add_attraction(title, **kwargs):
 
 if __name__ == "__main__":
     print("Populating GlasGo Database . . . ")
+
+    print("Populating Tags . . . ")
     populate_tags()
     for tag in Tag.objects.all():
         print(tag)
+
+    print("Populating Attractions . . . ")
     populate_attractions()
     for attraction in Attraction.objects.all():
         print(attraction)
+
+    print("Populating Users . . . ")
+    for user in User.objects.all():
+        print(user)
+
+    print("Populating Votes . . . ")
+    for vote in Vote.objects.all():
+        print(vote)
