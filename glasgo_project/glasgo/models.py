@@ -60,9 +60,33 @@ class Attraction(models.Model):
 
     tags = models.ManyToManyField(Tag)
 
+    def add_price_tag(self):
+        for i in self.PRICE_RANGE_CHOICES:
+            tag = Tag.objects.get(name=i[1])
+            if self.price_range == i[0]:
+                self.tags.add(tag)
+            else:
+                self.tags.remove(tag)
+
+    def add_access_tags(self):
+        access_tags = {
+            "Family-friendly": self.family_friendly,
+            "Disabled Access": self.disabled_access,
+            "Parking": self.parking,
+            "Multi-language": self.multi_language
+        }
+        for tag in access_tags:
+            tag = Tag.objects.get(name=tag[0])
+            if tag[1]:
+                self.tags.add(tag)
+            else:
+                self.tags.remove(tag)
+
     # Override
     def save(self, *args, **kwargs):
         self.slug = slugify(self.title)
+        self.add_price_tag()
+        self.add_access_tags()
         super(Attraction, self).save(*args, **kwargs)
 
     def __str__(self):

@@ -31,7 +31,8 @@ tags = {
     "Expensive": ["Free", "Cheap", "Moderate"],
     "Family-friendly": [],
     "Disabled Access": [],
-    "Parking Availability": [],
+    "Parking": [],
+    "Multi-language": [],
 }
 
 attractions = {
@@ -66,7 +67,7 @@ attractions = {
         "family_friendly": True,
         "disabled_access": True,
         "parking": False,
-        "multi-language": True,
+        "multi_language": True,
         "tags": ["Cultural Landmark", "Museum",]
     },
 }
