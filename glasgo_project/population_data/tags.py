@@ -1,0 +1,17 @@
+tags = {
+    "Museum": [],
+    "Festival": [],
+    "Cultural Landmark": [],
+    "Natural Landmark": [],
+    "Park": [],
+    "Sports": [],
+    "Monument": [],
+    "Free": ["Cheap", "Moderate", "Expensive"],
+    "Cheap": ["Free", "Moderate", "Expensive"],
+    "Moderate": ["Free", "Cheap", "Expensive"],
+    "Expensive": ["Free", "Cheap", "Moderate"],
+    "Family-friendly": [],
+    "Disabled Access": [],
+    "Parking": [],
+    "Multi-language": [],
+}
