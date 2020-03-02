@@ -68,7 +68,7 @@ attractions = {
         "family_friendly": True,
         "disabled_access": True,
         "parking": False,
-        "multi-language": True,
+        "multi_language": True,
         "tags": ["Cultural Landmark", "Museum",]
     },
     "Glasgow Cathedral": {
@@ -79,7 +79,7 @@ attractions = {
         "family_friendly": True,
         "disabled_access": True,
         "parking": False,
-        "multi-language": True,
+        "multi_language": True,
         "tags": ["Cultural Landmark", "Monument", ]
     },
     "Glasgow Botanic Gardens": {
@@ -90,7 +90,7 @@ attractions = {
         "family_friendly": True,
         "disabled_access": True,
         "parking": False,
-        "multi-language": True,
+        "multi_language": True,
         "tags": ["Natural Landmark", "Park", ]
     },
     "Pollock Country Park": {
@@ -101,7 +101,7 @@ attractions = {
         "family_friendly": True,
         "disabled_access": True,
         "parking": True,
-        "multi-language": True,
+        "multi_language": True,
         "tags": ["Natural Landmark", "Cultural Landmark", "Park", ]
     },
     "The Riverside Museum of Transport and Travel": {
@@ -112,7 +112,7 @@ attractions = {
         "family_friendly": True,
         "disabled_access": True,
         "parking": True,
-        "multi-language": True,
+        "multi_language": True,
         "tags": ["Cultural Landmark", "Museum"]
     },
     "University of Glasgow": {
@@ -123,7 +123,7 @@ attractions = {
         "family_friendly": True,
         "disabled_access": True,
         "parking": True,
-        "multi-language": True,
+        "multi_language": True,
         "tags": ["Cultural Landmark", ]
     },
     "Tennents Wellpark Brewery": {
@@ -134,7 +134,7 @@ attractions = {
         "family_friendly": True,
         "disabled_access": False,
         "parking": True,
-        "multi-language": False,
+        "multi_language": False,
         "tags": ["Cultural Landmark", ]
     },
     "The Necropolis": {
@@ -145,7 +145,7 @@ attractions = {
         "family_friendly": True,
         "disabled_access": False,
         "parking": True,
-        "multi-language": False,
+        "multi_language": False,
         "tags": ["Cultural Landmark", "Park", ]
     },
 }
