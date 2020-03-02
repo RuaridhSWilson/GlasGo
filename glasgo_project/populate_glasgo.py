@@ -13,6 +13,7 @@ django.setup()
 from django.contrib.auth.models import User
 from glasgo.models import Attraction, Tag, Vote
 from glasgo_project import settings
+from population_data.users import users
 
 
 TEMP_DIR = os.path.join(settings.MEDIA_DIR, "temp")
@@ -69,7 +70,7 @@ attractions = {
         "disabled_access": True,
         "parking": False,
         "multi_language": True,
-        "tags": ["Cultural Landmark", "Museum",]
+        "tags": ["Cultural Landmark", "Museum",],
     },
     "Glasgow Cathedral": {
         "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c7/Glasgow-cathedral-may-2007.jpg/800px-Glasgow-cathedral-may-2007.jpg",
@@ -80,7 +81,7 @@ attractions = {
         "disabled_access": True,
         "parking": False,
         "multi_language": True,
-        "tags": ["Cultural Landmark", "Monument", ]
+        "tags": ["Cultural Landmark", "Monument",],
     },
     "Glasgow Botanic Gardens": {
         "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c9/Wfm_glasgow_botanic_gardens.jpg/1024px-Wfm_glasgow_botanic_gardens.jpg",
@@ -91,7 +92,7 @@ attractions = {
         "disabled_access": True,
         "parking": False,
         "multi_language": True,
-        "tags": ["Natural Landmark", "Park", ]
+        "tags": ["Natural Landmark", "Park",],
     },
     "Pollock Country Park": {
         "image": "https://peoplemakeglasgow.com/images/Things_to_do/Parks_and_gardens/PollokHouse-995.jpg",
@@ -102,7 +103,7 @@ attractions = {
         "disabled_access": True,
         "parking": True,
         "multi_language": True,
-        "tags": ["Natural Landmark", "Cultural Landmark", "Park", ]
+        "tags": ["Natural Landmark", "Cultural Landmark", "Park",],
     },
     "The Riverside Museum of Transport and Travel": {
         "image": "https://media-cdn.tripadvisor.com/media/photo-s/05/29/a9/44/the-riverside-museum.jpg",
@@ -113,7 +114,7 @@ attractions = {
         "disabled_access": True,
         "parking": True,
         "multi_language": True,
-        "tags": ["Cultural Landmark", "Museum"]
+        "tags": ["Cultural Landmark", "Museum"],
     },
     "University of Glasgow": {
         "image": "https://www.telegraph.co.uk/content/dam/education/2016/08/01/21590241universityofglasgowm-xlarge_trans_NvBQzQNjv4BqvHvVfV1SJqTMKlHaE5FBlnzInX02uMnPr3P1UZfzc14.jpg",
@@ -124,7 +125,7 @@ attractions = {
         "disabled_access": True,
         "parking": True,
         "multi_language": True,
-        "tags": ["Cultural Landmark", ]
+        "tags": ["Cultural Landmark",],
     },
     "Tennents Wellpark Brewery": {
         "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/23/Tennents_Brewery.jpg/1200px-Tennents_Brewery.jpg",
@@ -135,7 +136,7 @@ attractions = {
         "disabled_access": False,
         "parking": True,
         "multi_language": False,
-        "tags": ["Cultural Landmark", ]
+        "tags": ["Cultural Landmark",],
     },
     "The Necropolis": {
         "image": "https://assets.atlasobscura.com/media/W1siZiIsInVwbG9hZHMvcGxhY2VfaW1hZ2VzL2EzNjkzMjlhMmM2Y2Y1MTdiMzM3NTI3NjU1MTIzMWVjN2ZmOTU2ZTkuanBnIl0sWyJwIiwiY29udmVydCIsIi1xdWFsaXR5IDkxIC1hdXRvLW9yaWVudCJdLFsicCIsInRodW1iIiwiNjAweD4iXV0/a369329a2c6cf517b3375276551231ec7ff956e9.jpg",
@@ -146,7 +147,7 @@ attractions = {
         "disabled_access": False,
         "parking": True,
         "multi_language": False,
-        "tags": ["Cultural Landmark", "Park", ]
+        "tags": ["Cultural Landmark", "Park",],
     },
 }
 
@@ -161,6 +162,11 @@ def populate_tags():
 def populate_attractions():
     for attraction, kwargs in attractions.items():
         add_attraction(attraction, **kwargs)
+
+
+def populate_users():
+    for user in users:
+        User.objects.create_user(user, password=user + "_password")
 
 
 def add_tag(name):
@@ -220,6 +226,7 @@ if __name__ == "__main__":
         print(attraction)
 
     print("Populating Users . . . ")
+    populate_users()
     for user in User.objects.all():
         print(user)
 
