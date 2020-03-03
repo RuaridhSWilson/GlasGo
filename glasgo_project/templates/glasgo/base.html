@@ -19,24 +19,46 @@
     <!-- Navbar Block -->
     {% block navbar_block %}
         <header>
-            <nav class="navbar navbar-expand-md navbar-light fixed-top p-0" style="background-color: #92628D">
-                <a class="navbar-brand p-2" href="{% url 'glasgo:home' %}">GlasGo</a>
+            <nav class="navbar navbar-expand-sm navbar-light fixed-top p-0 " style="background-color: #92628D">
+                <div class="container-fluid">
+                    <ul class="nav navbar-nav p-2">
+                        <a class="navbar-brand" href="{% url 'glasgo:home' %}">GlasGo</a>
 
-                <ul class="navbar-nav mr-auto">
-                    <a class="navbar-brand" href="{% url 'glasgo:home' %}">
-                        <img src="GlasGo Logo.png" width="200" height="40" alt="">
-                    </a>
-                    <li class="nav-item"><a class="nav-link" href="{% url 'glasgo:home' %}">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="{% url 'glasgo:search' %}">Search by Tags</a></li>
-                    {% if user.is_authenticated %}
-                        <li class="nav-item"><a class="nav-link" href="{% url 'glasgo:add' %}">Add Attraction</a></li>
-                        <div class="d-flex justify-content-end"><span class="navbar-text">Hi {{ username }}</span></div>
-                        <div class="d-flex justify-content-end"><li class="nav-item"><a class="nav-link" href="{% url 'auth_logout' %}?next=/glasgo/">Logout</a></li></div>
-                    {% elif not user.is_authenticated %}
-                        <li class="nav-item"><a class="nav-link" href="{% url 'glasgo:add' %}">Add Attraction</a></li>
-                        <div class="d-flex justify-content-end"><li class="nav-item "><a class="nav-link" href="{% url 'auth_login' %}">Login/Register</a></li></div>
-                    {% endif %}
-                </ul>
+                        <!-- TODO - add GlasGo logo on following line and remove GlasGo text above -->
+                        <li><a class="navbar-brand" href="{% url 'glasgo:home' %}">
+                            <img src="GlasGo Logo.png" width="200" height="40" alt="">
+                        </a><li>
+
+                        <li><a class="nav-link" href="{% url 'glasgo:home' %}">Home</a></li>
+
+                        <!-- TODO - change url on following line to 'glasgo:search' -->
+                        <li><a class="nav-link" href="{% url 'glasgo:home' %}">Search by Tags</a></li>
+
+                        {% if user.is_authenticated %}
+
+                            <li><a class="nav-link" href="{% url 'glasgo:add' %}">Add Attraction</a></li>
+
+                        {% elif not user.is_authenticated %}
+
+                            <li><a class="nav-link" href="{% url 'glasgo:add' %}">Add Attraction</a></li>
+
+                        {% endif %}
+                    </ul>
+
+                    <ul class="nav navbar-nav navbar-right">
+                        {% if user.is_authenticated %}
+
+                            <li><span class="navbar-text">Hi {{ username }}</span></li>
+
+                            <li><button class="btn btn-sm navbar-btn"><a class="nav-link" href="{% url 'auth_logout' %}?next=/glasgo/">Logout</a></button></li>
+
+                        {% elif not user.is_authenticated %}
+
+                            <li><a class="btn btn-light btn-sm" href="{% url 'auth_login' %}">Login/Register</a></button></li>
+
+                        {% endif %}
+                    </ul>
+                </div>
             </nav>
         </header>
     {% endblock %}
@@ -56,6 +78,7 @@
     {% block body_block %}{% endblock %}
 </div>
 
+<br><br><br><br><br><br><br><br><br>
 <div>
     <!-- Footer Block -->
     {% block footer_block %}
