@@ -50,11 +50,11 @@
 
                             <li><span class="navbar-text">Hi {{ username }}</span></li>
 
-                            <li><button class="btn btn-sm navbar-btn"><a class="nav-link" href="{% url 'auth_logout' %}?next=/glasgo/">Logout</a></button></li>
+                            <li><a class="btn btn-light btn-sm" href="{% url 'auth_logout' %}?next=/glasgo/">Logout</a></li>
 
                         {% elif not user.is_authenticated %}
 
-                            <li><a class="btn btn-light btn-sm" href="{% url 'auth_login' %}">Login/Register</a></button></li>
+                            <li><a class="btn btn-light btn-sm" href="{% url 'auth_login' %}">Login/Register</a></li>
 
                         {% endif %}
                     </ul>
