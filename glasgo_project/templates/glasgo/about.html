@@ -1,2 +1,24 @@
 {% extends "glasgo/base.html" %}
 {% load static %}
+
+{% block title_block %}
+    About Glasgo
+{% endblock %}
+
+<h1>About Us</h1>
+
+<div>
+    <p>Welcome to GlasGo, your number one source of Attractions/Landmarks/Events in Glasgow.</p>
+    <p>Founded in 2020 by Torrin McQueen, Joel Feven, Keivan Shooshtarian and Ruaridh Wilson all students of University of Glasgow.</p>
+    <p>This website was created for our second year Computing Science Web Application Development Project.</p>
+    <p>We hope your find what you're looking for in Glasgow and if you get a chance vote on your favourite places in Glasgow!</p>
+    <p>Help improve our website by adding attractions that were not featured.</p>
+    <p>Sinerely,
+        <br><br><br>
+        GlasGo Team!
+    </p>
+</div>
+
+<!-- Overrides the footer block in base html so it doesn't show the "About us" link -->
+{% block footer_block %}
+{% endblock %}

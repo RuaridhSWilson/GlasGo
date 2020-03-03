@@ -1,6 +1,10 @@
 {% extends "glasgo/base.html" %}
 {% load static %}
 
+{% block title_block %}
+    Add Attraction
+{% endblock %}
+
 {% block body_block %}
     <form role="form" method="post" action="{% url 'glasgo:add' %}" enctype="multipart/form-data">
         {% csrf_token %}
