@@ -7,23 +7,62 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 {#    <link rel="icon" href="{% static 'images/favicon.ico' %}">#}
-    <title>Title</title>
+    <!-- Title Block -->
+    <title>GlasGo - {% block title_block %}Welcome{% endblock %}</title>
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 </head>
 <body>
 
-<!-- Sidebar for displaying top ten attractions -->
-<!-- TODO: bootstrap this -->
 <div>
+    <!-- Navbar Block -->
+    {% block navbar_block %}
+        <header>
+            <nav class="navbar navbar-expand-md navbar-light fixed-top p-0" style="background-color: #92628D">
+                <a class="navbar-brand p-2" href="{% url 'glasgo:home' %}">GlasGo</a>
+
+                <ul class="navbar-nav mr-auto">
+                    <a class="navbar-brand" href="{% url 'glasgo:home' %}">
+                        <img src="GlasGo Logo.png" width="200" height="40" alt="">
+                    </a>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'glasgo:home' %}">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'glasgo:search' %}">Search by Tags</a></li>
+                    {% if user.is_authenticated %}
+                        <li class="nav-item"><a class="nav-link" href="{% url 'glasgo:add' %}">Add Attraction</a></li>
+                        <div class="d-flex justify-content-end"><span class="navbar-text">Hi {{ username }}</span></div>
+                        <div class="d-flex justify-content-end"><li class="nav-item"><a class="nav-link" href="{% url 'auth_logout' %}?next=/glasgo/">Logout</a></li></div>
+                    {% elif not user.is_authenticated %}
+                        <li class="nav-item"><a class="nav-link" href="{% url 'glasgo:add' %}">Add Attraction</a></li>
+                        <div class="d-flex justify-content-end"><li class="nav-item "><a class="nav-link" href="{% url 'auth_login' %}">Login/Register</a></li></div>
+                    {% endif %}
+                </ul>
+            </nav>
+        </header>
+    {% endblock %}
+</div>
+
+<!-- Sidebar for displaying top ten attractions -->
+<!-- TODO: bootstrap this & get associated likes -->
+<div>
+    <!-- Sidebar Block -->
     {% block top_ten_block %}
         {% get_top_ten %}
     {% endblock %}
 </div>
 
 <div>
+    <!-- Body Block -->
     {% block body_block %}{% endblock %}
+</div>
+
+<div>
+    <!-- Footer Block -->
+    {% block footer_block %}
+    <footer>
+        <a href="{% url 'glasgo:about' %}">About Us</a>
+    </footer>
+    {% endblock %}
 </div>
 
 
