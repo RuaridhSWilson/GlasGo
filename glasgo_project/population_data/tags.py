@@ -1,6 +1,8 @@
 tags = {
     "Museum": [],
     "Festival": [],
+    "Art Gallery": [],
+    "Historic": [],
     "Cultural Landmark": [],
     "Natural Landmark": [],
     "Park": [],
