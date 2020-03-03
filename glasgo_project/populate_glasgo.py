@@ -153,9 +153,6 @@ attractions = {
     },
 }
 
-=======
->>>>>>> origin/JoelTestBranch
-
 def populate_tags():
     for tag in tags.keys():
         add_tag(tag)
@@ -233,17 +230,11 @@ if __name__ == "__main__":
         print(attraction)
 
     print("Populating Users . . . ")
-<<<<<<< HEAD
-=======
+
     populate_users()
->>>>>>> origin/JoelTestBranch
     for user in User.objects.all():
         print(user)
 
     print("Populating Votes . . . ")
     for vote in Vote.objects.all():
-<<<<<<< HEAD
         print(vote)
-=======
-        print(vote)
->>>>>>> origin/JoelTestBranch
