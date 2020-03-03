@@ -1,44 +1,3 @@
-import os
-import shutil
-import tempfile
-import sqlite3
-
-os.environ.setdefault("DJANGO_SETTINGS_MODULE", "glasgo_project.settings")
-
-import django
-from django.core.files import File
-import urllib.request
-from urllib.parse import urlparse
-
-django.setup()
-from django.contrib.auth.models import User
-from glasgo.models import Attraction, Tag, Vote
-from glasgo_project import settings
-from population_data.tags import tags
-from population_data.attractions import attractions
-from population_data.users import users
-
-
-TEMP_DIR = os.path.join(settings.MEDIA_DIR, "temp")
-
-tags = {
-    "Museum": [],
-    "Festival": [],
-    "Cultural Landmark": [],
-    "Natural Landmark": [],
-    "Park": [],
-    "Sports": [],
-    "Monument": [],
-    "Free": ["Cheap", "Moderate", "Expensive"],
-    "Cheap": ["Free", "Moderate", "Expensive"],
-    "Moderate": ["Free", "Cheap", "Expensive"],
-    "Expensive": ["Free", "Cheap", "Moderate"],
-    "Family-friendly": [],
-    "Disabled Access": [],
-    "Parking": [],
-    "Multi-language": [],
-}
-
 attractions = {
     "Celtic Park Stadium": {
         "link": "http://www.celticfc.net/mainindex",
@@ -72,7 +31,7 @@ attractions = {
         "disabled_access": True,
         "parking": False,
         "multi_language": True,
-        "tags": ["Cultural Landmark", "Museum",]
+        "tags": ["Cultural Landmark", "Museum", "Art Gallery",],
     },
     "Glasgow Cathedral": {
         "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c7/Glasgow-cathedral-may-2007.jpg/800px-Glasgow-cathedral-may-2007.jpg",
@@ -83,7 +42,7 @@ attractions = {
         "disabled_access": True,
         "parking": False,
         "multi_language": True,
-        "tags": ["Cultural Landmark", "Monument", ]
+        "tags": ["Cultural Landmark", "Monument", "Historic",],
     },
     "Glasgow Botanic Gardens": {
         "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c9/Wfm_glasgow_botanic_gardens.jpg/1024px-Wfm_glasgow_botanic_gardens.jpg",
@@ -94,7 +53,7 @@ attractions = {
         "disabled_access": True,
         "parking": False,
         "multi_language": True,
-        "tags": ["Natural Landmark", "Park", ]
+        "tags": ["Natural Landmark", "Park",],
     },
     "Pollock Country Park": {
         "image": "https://peoplemakeglasgow.com/images/Things_to_do/Parks_and_gardens/PollokHouse-995.jpg",
@@ -105,7 +64,7 @@ attractions = {
         "disabled_access": True,
         "parking": True,
         "multi_language": True,
-        "tags": ["Natural Landmark", "Cultural Landmark", "Park", ]
+        "tags": ["Natural Landmark", "Cultural Landmark", "Park",],
     },
     "The Riverside Museum of Transport and Travel": {
         "image": "https://media-cdn.tripadvisor.com/media/photo-s/05/29/a9/44/the-riverside-museum.jpg",
@@ -116,7 +75,7 @@ attractions = {
         "disabled_access": True,
         "parking": True,
         "multi_language": True,
-        "tags": ["Cultural Landmark", "Museum"]
+        "tags": ["Cultural Landmark", "Museum"],
     },
     "University of Glasgow": {
         "image": "https://www.telegraph.co.uk/content/dam/education/2016/08/01/21590241universityofglasgowm-xlarge_trans_NvBQzQNjv4BqvHvVfV1SJqTMKlHaE5FBlnzInX02uMnPr3P1UZfzc14.jpg",
@@ -127,7 +86,7 @@ attractions = {
         "disabled_access": True,
         "parking": True,
         "multi_language": True,
-        "tags": ["Cultural Landmark", ]
+        "tags": ["Cultural Landmark", "Historic",],
     },
     "Tennents Wellpark Brewery": {
         "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/23/Tennents_Brewery.jpg/1200px-Tennents_Brewery.jpg",
@@ -138,7 +97,7 @@ attractions = {
         "disabled_access": False,
         "parking": True,
         "multi_language": False,
-        "tags": ["Cultural Landmark", ]
+        "tags": ["Cultural Landmark",],
     },
     "The Necropolis": {
         "image": "https://assets.atlasobscura.com/media/W1siZiIsInVwbG9hZHMvcGxhY2VfaW1hZ2VzL2EzNjkzMjlhMmM2Y2Y1MTdiMzM3NTI3NjU1MTIzMWVjN2ZmOTU2ZTkuanBnIl0sWyJwIiwiY29udmVydCIsIi1xdWFsaXR5IDkxIC1hdXRvLW9yaWVudCJdLFsicCIsInRodW1iIiwiNjAweD4iXV0/a369329a2c6cf517b3375276551231ec7ff956e9.jpg",
@@ -149,101 +108,94 @@ attractions = {
         "disabled_access": False,
         "parking": True,
         "multi_language": False,
-        "tags": ["Cultural Landmark", "Park", ]
+        "tags": ["Cultural Landmark", "Park", "Historic",],
+    },
+    "The Mackintosh House": {
+        "image": "https://www.gla.ac.uk/media/Media_531136_smxx.jpg",
+        "description": "The Mackintosh House is a meticulous reassemblage of the principal interiors from the Mackintoshes’ Glasgow home. The couple lived at 78 Southpark Avenue (originally 6 Florentine Terrace) from 1906 to 1914. Substantial alterations were made in 1906 as Mackintosh remodelled the proportions and natural lighting of the Victorian end-of-terrace house. The principal interiors were decorated in his distinctive style, remarkable then, and now, for the disciplined austerity of the furnishings and decoration.  ",
+        "location": "82 Hillhead Street, Glasgow, G12 8QE",
+        "price_range": "CH",
+        "family_friendly": True,
+        "disabled_access": False,
+        "parking": False,
+        "multi_language": False,
+        "tags": ["Cultural Landmark", "Historic",],
+    },
+    "Glasgow Science Centre": {
+        "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a6/Glasgow_Science_Centre_and_Tower.jpg/1024px-Glasgow_Science_Centre_and_Tower.jpg",
+        "description": "Glasgow Science Centre is a visitor attraction located in the Clyde Waterfront Regeneration area on the south bank of the River Clyde in Glasgow, Scotland. Queen Elizabeth II opened Glasgow Science Centre on 5 July 2001. It is one of Scotland's most popular paid-for visitor attractions. It is a purpose-built science centre composed of three principal buildings: Science Mall, Glasgow Tower and an IMAX cinema.  ",
+        "location": "50 Pacific Quay, Glasgow, G51 1EA",
+        "price_range": "MO",
+        "family_friendly": True,
+        "disabled_access": True,
+        "parking": True,
+        "multi_language": True,
+        "tags": ["Museum", ],
+    },
+    "The Tenement House": {
+        "image": "https://c2.staticflickr.com/6/5063/5685463336_eb114eae53_b.jpg",
+        "description": "The Tenement House is a National Trust for Scotland property in Glasgow's City Centre. With 1892 original features it provides a rare glimpse into life in Glasgow in the early 20th century. ",
+        "location": "145 Buccleuch Street, Glasgow, G3 6QN",
+        "price_range": "CH",
+        "family_friendly": True,
+        "disabled_access": True,
+        "parking": False,
+        "multi_language": False,
+        "tags": ["Cultural Landmark", "Historic", "Museum",],
+    },
+    "People's Palace and Winter Gardens": {
+        "image": "https://prodglportalv2.azureedge.net/cache/9/9/9/f/d/d/999fdd47ccb23fc992e922f212777f78cece67d0.jpg",
+        "description": "The People's Palace and Winter Gardens, set in historic Glasgow Green, the oldest public space in the city, tells the story of Glasgow and its people from 1750 to the end of the 20th century. Adjacent to the People's Palace is the extravagant and recently restored Doulton Fountain, unveiled in 1888 to commemorate Queen Victoria's Golden Jubilee.",
+        "location": "Glasgow Green, Glasgow, G40 1AT",
+        "price_range": "FR",
+        "family_friendly": True,
+        "disabled_access": True,
+        "parking": False,
+        "multi_language": False,
+        "tags": ["Cultural Landmark", "Museum", "Historic",],
+    },
+    "Glasgow Green": {
+        "image": "https://kitesurfbikerambling.files.wordpress.com/2011/04/glasgow-green1.jpeg",
+        "description": "One of the oldest and most historic parks in Scotland stretches from the Saltmarket at the High Court across to the Calton and Bridgeton districts, and was used mainly for sheep and cattle grazing until the nineteenth century.",
+        "location": "90 Greendyke Street, Glasgow, G1 5DB",
+        "price_range": "FR",
+        "family_friendly": True,
+        "disabled_access": True,
+        "parking": False,
+        "multi_language": True,
+        "tags": ["Park", "Historic",],
+    },
+    "Glasgow Police Museum": {
+        "image": "https://peoplemakeglasgow.com/images/Top_Reasons_To_Visit/Glasgow_Police_Museum.jpg",
+        "description": "The Glasgow Police Museum illustrates the history of the Glasgow Police 1779 - 1975, through artifacts, stories and images.",
+        "location": "30 Bell Street, Glasgow, G1 1LG",
+        "price_range": "FR",
+        "family_friendly": True,
+        "disabled_access": True,
+        "parking": False,
+        "multi_language": False,
+        "tags": ["Museum",],
+    },
+    "Hunterian Museum": {
+        "image": "https://www.gla.ac.uk/media/Media_591822_smxx.jpg",
+        "description": "The Hunterian is Scotland's oldest public museum and home to one of the largest collections outside the National Museums. The Hunterian is one of the leading university museums in the world and its collections have been Recognised as a Collection of National Significance. It is one of Scotland’s most important cultural assets.‌",
+        "location": "Glasgow University, University Avenue, Glasgow, G12 8QQ, ",
+        "price_range": "FR",
+        "family_friendly": True,
+        "disabled_access": True,
+        "parking": True,
+        "multi_language": False,
+        "tags": ["Museum", "Historic", "Cultural Landmark",],
+    },
+    "Kelvingrove Park": {
+        "image": "https://davidmschroeder.files.wordpress.com/2012/08/kelvingrove-park-glasgow-1024x768.jpg",
+        "description": "The River Kelvin runs through the West End's large and attractive park which hosts festivals and events throughout the year.",
+        "location": "Otago Street, Glasgow",
+        "price_range": "FR",
+        "family_friendly": True,
+        "disabled_access": True,
+        "parking": False,
+        "multi_language": True,
+        "tags": ["Park", "Cultural Landmark",],
     },
 }
-
-=======
->>>>>>> origin/JoelTestBranch
-
-def populate_tags():
-    for tag in tags.keys():
-        add_tag(tag)
-    for tag, mutex_tags in tags.items():
-        add_mutex_tags(tag, mutex_tags)
-
-
-def populate_attractions():
-    for attraction, kwargs in attractions.items():
-        add_attraction(attraction, **kwargs)
-
-
-def populate_users():
-    for username in users:
-        user, cond = User.objects.get_or_create(username=username)
-        if cond:
-            user.password = username + "_password"
-            user.save()
-
-
-def add_tag(name):
-    Tag.objects.get_or_create(name=name)[0].save()
-
-
-def add_mutex_tags(name, mutex_tags=()):
-    tag = Tag.objects.get_or_create(name=name)[0]
-    mutex_tag_ids = (Tag.objects.get(name=mutex_tag).id for mutex_tag in mutex_tags)
-    tag.mutex_tags.add(*mutex_tag_ids)
-    tag.save()
-
-
-def add_attraction(title, **kwargs):
-    att = Attraction.objects.get_or_create(title=title)[0]
-
-    att.link = kwargs.get("link")
-
-    image_url = kwargs["image"]
-    filename = os.path.basename(urlparse(image_url).path)
-    with urllib.request.urlopen(image_url) as response:
-        with tempfile.NamedTemporaryFile() as tmp_img:
-            shutil.copyfileobj(response, tmp_img)
-            image_file = File(tmp_img)
-            att.image.save(filename, image_file, save=False)
-
-    att.description = kwargs["description"]
-    att.location = kwargs["location"]
-
-    att.price_range = kwargs.get("price_range")
-
-    att.family_friendly = kwargs["family_friendly"]
-    att.disabled_access = kwargs["disabled_access"]
-    att.parking = kwargs["parking"]
-    att.multi_language = kwargs["multi_language"]
-
-    att.starts = kwargs.get("starts")
-    att.ends = kwargs.get("ends")
-
-    tag_ids = (Tag.objects.get(name=tag).id for tag in kwargs["tags"])
-    att.tags.add(*tag_ids)
-
-    att.save()
-
-
-if __name__ == "__main__":
-    print("Populating GlasGo Database . . . ")
-
-    print("Populating Tags . . . ")
-    populate_tags()
-    for tag in Tag.objects.all():
-        print(tag)
-
-    print("Populating Attractions . . . ")
-    populate_attractions()
-    for attraction in Attraction.objects.all():
-        print(attraction)
-
-    print("Populating Users . . . ")
-<<<<<<< HEAD
-=======
-    populate_users()
->>>>>>> origin/JoelTestBranch
-    for user in User.objects.all():
-        print(user)
-
-    print("Populating Votes . . . ")
-    for vote in Vote.objects.all():
-<<<<<<< HEAD
-        print(vote)
-=======
-        print(vote)
->>>>>>> origin/JoelTestBranch
