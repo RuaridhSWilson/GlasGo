@@ -73,7 +73,7 @@ class Attraction(models.Model):
             "Family-friendly": self.family_friendly,
             "Disabled Access": self.disabled_access,
             "Parking": self.parking,
-            "Multi-language": self.multi_language
+            "Multi-language": self.multi_language,
         }
         for name, condition in access_tags.items():
             tag = Tag.objects.get(name=name)
@@ -88,10 +88,9 @@ class Attraction(models.Model):
         try:
             self.add_price_tag()
             self.add_access_tags()
-        except (Attraction.DoesNotExist, ValueError) as e:
+        except (Attraction.DoesNotExist, ValueError):
             pass
         super(Attraction, self).save(*args, **kwargs)
-
 
     def __str__(self):
         return self.title
