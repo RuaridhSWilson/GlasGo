@@ -6,7 +6,7 @@ from django.contrib.auth.models import User
 
 
 def image_path(instance, filename):
-    return os.path.join("attractions", instance.title, filename)
+    return os.path.join("attractions", instance.slug, filename)
 
 
 class Tag(models.Model):

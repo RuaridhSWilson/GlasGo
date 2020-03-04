@@ -1,0 +1,22 @@
+{% extends "glasgo/base.html" %}
+{% load static %}
+{% load glasgo_template_tags %}
+
+{% block title_block %}
+    Search
+{% endblock %}
+
+{% block body_block %}
+    <!-- Search form -->
+    <input type="search"
+           id="search-input"
+           class="form-control ds-input"
+           placeholder="Search..."
+           data-url="{% url 'glasgo:search_attractions' %}" />
+
+
+    <!-- Results -->
+    <div id="search-results">
+        {% get_attractions %}
+    </div>
+{% endblock %}

@@ -5,6 +5,7 @@ from django.utils.decorators import method_decorator
 from django.views import View
 
 from glasgo.forms import AttractionForm
+from glasgo.helper_functions import get_attractions
 from glasgo.models import Attraction
 
 
@@ -56,3 +57,19 @@ class AddAttractionView(View):
                 "glasgo/add_attraction.html",
                 context={"form": AttractionForm()},
             )
+
+
+class SearchView(View):
+    def get(self, request):
+        return render(request, "glasgo/search.html")
+
+
+class SearchAttractionsView(View):
+    def get(self, request):
+        if "search" in request.GET:
+            search = request.GET["search"]
+        else:
+            search = ""
+
+        attractions = get_attractions(search)
+        return render(request, "glasgo/attractions.html", {"attractions": attractions})

@@ -1,0 +1,18 @@
+{% if attractions %}
+    <div class="list-group">
+        {% for attraction in attractions %}
+            <div class="list-group-item">
+                <h4 class="list-group-item-heading">
+                    <img src="{{ attraction.image.url }}" width="300" height="200" />
+                    <a href="{% url 'glasgo:attraction' attraction.slug %}">{{ attraction.title }}</a>
+                    <div style="float: right">
+                        <strong>{{ attraction.rating }}</strong>
+                    </div>
+                </h4>
+            </div>
+        {% endfor %}
+    </div>
+{% else %}
+    There are no attractions for the current search terms.
+    Would you like to <a href="{% url 'glasgo:add' %}">add one</a>?
+{% endif %}
