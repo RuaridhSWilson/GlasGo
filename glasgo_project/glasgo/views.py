@@ -8,7 +8,7 @@ from glasgo.forms import AttractionForm
 from glasgo.helper_functions import get_attractions
 from glasgo.models import Attraction
 
-
+# Home view
 class HomeView(View):
     def get(self, request):
         return render(
