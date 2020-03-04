@@ -30,9 +30,8 @@
                         </a><li>
 
                         <li><a class="nav-link" href="{% url 'glasgo:home' %}">Home</a></li>
-
-                        <!-- TODO - change url on following line to 'glasgo:search' -->
-                        <li><a class="nav-link" href="{% url 'glasgo:home' %}">Search by Tags</a></li>
+                    
+                        <li><a class="nav-link" href="{% url 'glasgo:search' %}">Search by Tags</a></li>
 
                         {% if user.is_authenticated %}
 
