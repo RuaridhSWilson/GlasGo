@@ -130,7 +130,7 @@ attractions = {
         "disabled_access": True,
         "parking": True,
         "multi_language": True,
-        "tags": ["Museum", ],
+        "tags": ["Museum",],
     },
     "The Tenement House": {
         "image": "https://c2.staticflickr.com/6/5063/5685463336_eb114eae53_b.jpg",
