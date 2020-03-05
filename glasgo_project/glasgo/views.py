@@ -44,7 +44,7 @@ class AddAttractionView(View):
 
     @method_decorator(login_required)
     def post(self, request):
-        form = AttractionForm(request.POST)
+        form = AttractionForm(request.POST, request.FILES)
         if form.is_valid():
             attraction = form.save(commit=True)
             return redirect(
