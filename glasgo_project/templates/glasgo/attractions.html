@@ -26,9 +26,13 @@
                                             </li>
                                         {% endfor %}
                                     </ul>
+                                    <span class="date">{{ attraction.time_since_added }}</span>
                                 </div>
-                                <span class="mb-1">{{ attraction.rating }}</span>
+                                <div class="col">
+                                    <span class="mb-5">{{ attraction.rating }}</span>
+                                </div>
                             </div>
+
                         </div>
                     </div>
                 </a>

@@ -30,3 +30,9 @@
     -ms-transform: translate(0%,-50%);
     transform: translate(0%,-50%);
 }
+
+.date {
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+}

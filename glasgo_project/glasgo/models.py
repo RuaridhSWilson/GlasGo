@@ -3,6 +3,7 @@ import os
 from django.db import models
 from django.template.defaultfilters import slugify
 from django.contrib.auth.models import User
+from datetime import timedelta, datetime, timezone
 
 
 def image_path(instance, filename):
@@ -54,11 +55,26 @@ class Attraction(models.Model):
     starts = models.DateTimeField(blank=True, null=True)
     ends = models.DateTimeField(blank=True, null=True)
 
-    added = models.DateTimeField(auto_now_add=True)
+    added = models.DateTimeField(blank=True, null=True)
 
     rating = models.IntegerField(default=0)
 
     tags = models.ManyToManyField(Tag)
+
+    @property
+    def time_since_added(self):
+        seconds_since = datetime.now(timezone.utc) - self.added
+        print(self.added)
+        if seconds_since.seconds < 60:          # seconds in a min
+            return "Less than a minute ago"
+        elif seconds_since.seconds < 3600:      # seconds in an hour
+            return f"added {seconds_since.seconds/60:.0f} minutes ago"
+        elif seconds_since.seconds < 86400:     # seconds in a day
+            return f"added {seconds_since.seconds/3600:.0f} hours ago"
+        elif seconds_since.seconds < 31557600:  # seconds in a year
+            return f"added {seconds_since.seconds/86400:.0f} days ago"
+        else:
+            return "added over a year ago"
 
     def add_price_tag(self):
         for i in self.PRICE_RANGE_CHOICES:
