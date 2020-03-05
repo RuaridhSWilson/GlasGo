@@ -34,7 +34,7 @@ attractions = {
         "tags": ["Cultural Landmark", "Museum", "Art Gallery",],
     },
     "Glasgow Cathedral": {
-        "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c7/Glasgow-cathedral-may-2007.jpg/800px-Glasgow-cathedral-may-2007.jpg",
+        "image": "https://upload.wikimedia.org/wikipedia/commons/c/c9/Glasgow_Cathedral_%28HDR%29_%288038797339%29.jpg",
         "description": "Glasgow Cathedral, also called the High Kirk of Glasgow or St Kentigern's or St Mungo's Cathedral, is the oldest cathedral on mainland Scotland and is the oldest building in Glasgow. Since the Reformation the cathedral continues in public ownership, within the responsibility of Historic Environment Scotland. The congregation is part of the Church of Scotland's Presbytery of Glasgow and its services and associations are open to all. ",
         "location": "Cathedral Precinct, Castle Street, Glasgow, G4 0QZ",
         "price_range": "FR",
@@ -45,7 +45,7 @@ attractions = {
         "tags": ["Cultural Landmark", "Monument", "Historic",],
     },
     "Glasgow Botanic Gardens": {
-        "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c9/Wfm_glasgow_botanic_gardens.jpg/1024px-Wfm_glasgow_botanic_gardens.jpg",
+        "image": "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fi.ytimg.com%2Fvi%2Fz7qBF2oVac0%2Fmaxresdefault.jpg&f=1&nofb=1",
         "description": "Glasgow Botanic Gardens is a botanical garden located in the West End of Glasgow, Scotland. It features several glasshouses, the most notable of which is the Kibble Palace. The Gardens has a wide variety of temperate and tropical flora, a herb garden, a chronological bed with plants arranged according to their introduction to Scotland, the UK's national collection of tree ferns, and a world rose garden officially opened in 2003 by Princess Tomohito of Mikasa.",
         "location": "730 Great Western Road, Glasgow, G12 0UE",
         "price_range": "FR",
@@ -133,7 +133,7 @@ attractions = {
         "tags": ["Museum",],
     },
     "The Tenement House": {
-        "image": "https://c2.staticflickr.com/6/5063/5685463336_eb114eae53_b.jpg",
+        "image": "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fkingfishervisitorguides.com%2Fglasgow%2Fwp-content%2Fuploads%2F2016%2F08%2FThe-Tenement-House_.jpg&f=1&nofb=1",
         "description": "The Tenement House is a National Trust for Scotland property in Glasgow's City Centre. With 1892 original features it provides a rare glimpse into life in Glasgow in the early 20th century. ",
         "location": "145 Buccleuch Street, Glasgow, G3 6QN",
         "price_range": "CH",
@@ -155,7 +155,7 @@ attractions = {
         "tags": ["Cultural Landmark", "Museum", "Historic",],
     },
     "Glasgow Green": {
-        "image": "https://kitesurfbikerambling.files.wordpress.com/2011/04/glasgow-green1.jpeg",
+        "image": "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fpeoplemakeglasgow.com%2Fimages%2FThings_to_do%2FFood_and_drink%2FPicnic%2FGlasgow-Green-995x500.jpg&f=1&nofb=1",
         "description": "One of the oldest and most historic parks in Scotland stretches from the Saltmarket at the High Court across to the Calton and Bridgeton districts, and was used mainly for sheep and cattle grazing until the nineteenth century.",
         "location": "90 Greendyke Street, Glasgow, G1 5DB",
         "price_range": "FR",
@@ -188,7 +188,7 @@ attractions = {
         "tags": ["Museum", "Historic", "Cultural Landmark",],
     },
     "Kelvingrove Park": {
-        "image": "https://davidmschroeder.files.wordpress.com/2012/08/kelvingrove-park-glasgow-1024x768.jpg",
+        "image": "https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2F4.bp.blogspot.com%2F-4Y7vxIwu55g%2FVTk8vSer2TI%2FAAAAAAAAAQE%2Ftz-qsBxNIz0%2Fs1600%2Fkelvingrove-park-summer.jpeg&f=1&nofb=1",
         "description": "The River Kelvin runs through the West End's large and attractive park which hosts festivals and events throughout the year.",
         "location": "Otago Street, Glasgow",
         "price_range": "FR",
