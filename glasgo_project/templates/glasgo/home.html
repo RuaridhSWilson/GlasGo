@@ -1,11 +1,14 @@
 {% extends "glasgo/base.html" %}
 {% load static %}
+{% load glasgo_template_tags %}
 
 {% block title_block %}
     Home
 {% endblock %}
 
 <!-- FOR each page - display 30 attractions sorted by date added (ascending order // newest first) -->
-
+{% block body_block %}
+    {% get_attractions %}
+{% endblock %}
 
 <!-- Code for page navigation below -->
