@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "glasgo",
     "registration",
+    "widget_tweaks",
 ]
 
 MIDDLEWARE = [

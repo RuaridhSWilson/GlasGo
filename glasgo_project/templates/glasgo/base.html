@@ -10,75 +10,79 @@
     <!-- Title Block -->
     <title>GlasGo - {% block title_block %}Welcome{% endblock %}</title>
 
-    <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'stylesheets/floating-labels.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'stylesheets/glasgo.css' %}" type="text/css">
 </head>
-<body>
 
-<div>
-    <!-- Navbar Block -->
-    {% block navbar_block %}
-        <header>
-            <nav class="navbar navbar-expand-sm navbar-light fixed-top p-0 " style="background-color: #92628D">
-                <div class="container-fluid">
-                    <ul class="nav navbar-nav p-2">
-                        <a class="navbar-brand" href="{% url 'glasgo:home' %}">GlasGo</a>
+<body style="padding-top: 60px">
 
-                        <!-- TODO - add GlasGo logo on following line and remove GlasGo text above -->
-                        <li><a class="navbar-brand" href="{% url 'glasgo:home' %}">
-                            <img src="GlasGo Logo.png" width="200" height="40" alt="">
-                        </a><li>
+<header>
+    <nav id="top-navbar"
+         class="navbar navbar-expand-sm navbar-light fixed-top p-0"
+         style="background-color: #92628D">
+        <div class="container-fluid">
+            <ul class="nav navbar-nav p-2">
+                <a class="navbar-brand" href="{% url 'glasgo:home' %}">GlasGo</a>
 
-                        <li><a class="nav-link" href="{% url 'glasgo:home' %}">Home</a></li>
+                <!-- TODO - add GlasGo logo on following line and remove GlasGo text above -->
+                <li><a class="navbar-brand" href="{% url 'glasgo:home' %}">
+                    <img src="GlasGo Logo.png" width="200" height="40" alt="">
+                </a><li>
 
-                        <!-- TODO - change url on following line to 'glasgo:search' -->
-                        <li><a class="nav-link" href="{% url 'glasgo:home' %}">Search by Tags</a></li>
+                <li><a class="nav-link" href="{% url 'glasgo:home' %}">Home</a></li>
 
-                        {% if user.is_authenticated %}
+                <li><a class="nav-link" href="{% url 'glasgo:search' %}">Search by Tags</a></li>
 
-                            <li><a class="nav-link" href="{% url 'glasgo:add' %}">Add Attraction</a></li>
+                {% if user.is_authenticated %}
 
-                        {% elif not user.is_authenticated %}
+                    <li><a class="nav-link" href="{% url 'glasgo:add' %}">Add Attraction</a></li>
 
-                            <li><a class="nav-link" href="{% url 'glasgo:add' %}">Add Attraction</a></li>
+                {% elif not user.is_authenticated %}
 
-                        {% endif %}
-                    </ul>
+                    <li><a class="nav-link" href="{% url 'glasgo:add' %}">Add Attraction</a></li>
 
-                    <ul class="nav navbar-nav navbar-right">
-                        {% if user.is_authenticated %}
+                {% endif %}
+            </ul>
 
-                            <li><span class="navbar-text">Hi {{ username }}</span></li>
+            <ul class="nav navbar-nav navbar-right">
+                {% if user.is_authenticated %}
 
-                            <li><a class="btn btn-light btn-sm" href="{% url 'auth_logout' %}?next=/glasgo/">Logout</a></li>
+                    <li><span class="navbar-text mr-4">Hi {{ username }}</span></li>
 
-                        {% elif not user.is_authenticated %}
+                    <li><a class="btn btn-light btn-sm mt-1" href="{% url 'auth_logout' %}?next=/glasgo/">Logout</a></li>
 
-                            <li><a class="btn btn-light btn-sm" href="{% url 'auth_login' %}">Login/Register</a></li>
+                {% elif not user.is_authenticated %}
 
-                        {% endif %}
-                    </ul>
-                </div>
-            </nav>
-        </header>
-    <br><br><br>
-    {% endblock %}
+                    <li><a class="btn btn-light btn-sm" href="{% url 'auth_login' %}">Login/Register</a></li>
+
+                {% endif %}
+            </ul>
+        </div>
+    </nav>
+</header>
+
+<div class="container-fluid">
+    <div class="row">
+        <nav class="col-md-3 d-none d-md-block sidebar">
+            <div class="sidebar-sticky">
+                <h4 class="mb-2" style="text-align: center">
+                    Top 10 Attractions
+                </h4>
+                {% block top_ten_block %}
+                    {% get_top_ten %}
+                {% endblock %}
+            </div>
+        </nav>
+
+        <main role="main" class="col-md-9 ml-sm-auto col-lg-9 px-4">
+            <!-- Body Block -->
+            {% block body_block %}{% endblock %}
+        </main>
+    </div>
 </div>
 
-<!-- Sidebar for displaying top ten attractions -->
-<!-- TODO: bootstrap this & get associated likes -->
-<div>
-    <!-- Sidebar Block -->
-    {% block top_ten_block %}
-        {% get_top_ten %}
-    {% endblock %}
-</div>
-
-<div>
-    <!-- Body Block -->
-    {% block body_block %}{% endblock %}
-</div>
-
+<br><br><br><br><br><br><br><br><br>
 <div>
     <!-- Footer Block -->
     {% block footer_block %}
@@ -94,6 +98,7 @@
 <script src="{% static 'js/jquery-3.4.1.min.js' %}" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+<script src="{% static 'js/jquery.validate.min.js' %}"></script>
 <script src="{% static 'js/glasgo-query.js' %}" crossorigin="anonymous"></script>
 <script src="{% static 'js/glasgo-ajax.js' %}" crossorigin="anonymous"></script>
 
