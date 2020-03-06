@@ -4,23 +4,23 @@ from glasgo.models import Attraction, Tag
 
 
 class AttractionForm(forms.ModelForm):
-    title = forms.CharField(max_length=Attraction.TITLE_MAX_LENGTH, help_text="Title")
+    title = forms.CharField(max_length=Attraction.TITLE_MAX_LENGTH)
     slug = forms.CharField(widget=forms.HiddenInput(), required=False)
 
-    link = forms.URLField(max_length=254, help_text="Website", required=False)
-    image = forms.ImageField(help_text="Image")
+    link = forms.URLField(max_length=254, label="Website", required=False)
+    image = forms.ImageField()
 
-    description = forms.TextInput()
+    description = forms.TextInput(attrs={"size": "30"})
     location = forms.TextInput()
 
     price_range = forms.ChoiceField(
-        choices=Attraction.PRICE_RANGE_CHOICES, required=False
+        choices=Attraction.PRICE_RANGE_CHOICES, required=False, #widget=forms.RadioSelect
     )
 
-    family_friendly = forms.BooleanField(required=False)
+    family_friendly = forms.BooleanField(required=False, label="Family-friendly")
     disabled_access = forms.BooleanField(required=False)
     parking = forms.BooleanField(required=False)
-    multi_language = forms.BooleanField(required=False)
+    multi_language = forms.BooleanField(required=False, label="Multi-language")
 
     starts = forms.DateTimeField(required=False)
     ends = forms.DateTimeField(required=False)
@@ -31,7 +31,6 @@ class AttractionForm(forms.ModelForm):
 
     tags = forms.MultipleChoiceField(
         choices=[(tag.id, tag.name) for tag in Tag.objects.all()],
-        widget=forms.CheckboxSelectMultiple,
     )
 
     class Meta:

@@ -3,6 +3,8 @@
     width: 48px;
     height: 48px;
     overflow: hidden;
+    border-radius: 5px;
+    margin: auto;
 }
 .thumbnail-48 img {
     position: absolute;
@@ -20,6 +22,7 @@
     width: 300px;
     height: 200px;
     overflow: hidden;
+    border-radius: 15px;
 }
 .thumbnail-300-200 img {
     position: absolute;
@@ -31,8 +34,18 @@
     transform: translate(0%,-50%);
 }
 
+.tag-list-item {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.8rem;
+}
+
 .date {
-    position: absolute;
-    bottom: 5px;
-    right: 5px;
+    display: flex;
+    flex-direction: column;
+    padding-right: 1rem;
+}
+
+.sidebar-thumbnail-col {
+    padding-left: 0.2rem;
+    padding-right: 0.2rem;
 }

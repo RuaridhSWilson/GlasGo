@@ -5,34 +5,43 @@
                 <a class="list-group-item list-group-item-action"
                    href="{% url 'glasgo:attraction' attraction.slug %}">
                     <div class="row">
-                        <div class="col4">
+                        <div class="col4" style="padding-left: 0.5rem">
                             <div class="thumbnail-300-200">
                                 <img src="{{ attraction.image.url }}"
                                      alt="Image of {{ attraction.title }}"/>
                             </div>
                         </div>
-                        <div class="col">
-                            <div class="d-flex w-100 justify-content-between">
-                                <div>
+                        <div class="col" style="display: flex; flex-direction: column">
+                            <div class="row mb-1">
+                                <div class="col">
                                     <h2 class="mb-1">{{ attraction.title }}</h2>
-                                    <p class="mb-1">
-                                        {{ attraction.description }}
-                                    </p>
+                                </div>
+                                <div class="col1" style="text-align: right">
+                                    {{ attraction.rating }}
+                                </div>
+                            </div>
+                            <div class="row mb-1">
+                                <div class="col description-snippet">
+                                    {{ attraction.description }}
+                                </div>
+                            </div>
+                            <div class="row mb-1" style="margin-top: auto">
+                                <div class="col">
                                     <ul class="list-group list-group-horizontal-sm">
                                         {% for tag in attraction.tags.all %}
                                             <!-- TODO: Make these links to search for that tag. -->
-                                            <li class="list-group-item">
+                                            <li class="list-group-item tag-list-item">
                                                 {{ tag.name }}
                                             </li>
                                         {% endfor %}
                                     </ul>
-                                    <span class="date">{{ attraction.time_since_added }}</span>
                                 </div>
-                                <div class="col">
-                                    <span class="mb-5">{{ attraction.rating }}</span>
+                                <div class="col2 date">
+                                    <div style="margin-top: auto">
+                                        {{ attraction.time_since_added }}
+                                    </div>
                                 </div>
                             </div>
-
                         </div>
                     </div>
                 </a>
