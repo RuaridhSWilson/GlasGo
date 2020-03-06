@@ -48,7 +48,7 @@
             <ul class="nav navbar-nav navbar-right">
                 {% if user.is_authenticated %}
 
-                    <li><span class="navbar-text mr-4">Hi {{ username }}</span></li>
+                    <li><span class="navbar-text mr-4">Hi {{ user }}</span></li>
 
                     <li><a class="btn btn-light btn-sm mt-1" href="{% url 'auth_logout' %}?next=/glasgo/">Logout</a></li>
 
