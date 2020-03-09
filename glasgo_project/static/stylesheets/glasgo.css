@@ -54,3 +54,8 @@
     margin: auto;
     max-width: 32rem;
 }
+
+label.error {
+    color: red !important;
+    text-align: right;
+}

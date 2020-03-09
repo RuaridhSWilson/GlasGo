@@ -8,13 +8,15 @@
 
 {% block content %}
     <!-- Search form -->
-    <input type="search"
-           id="search-input"
-           class="form-control ds-input"
-           style="margin-bottom: 0.5rem"
-           placeholder="Search..."
-           data-url="{% url 'glasgo:search_attractions' %}" />
-
+    <div class="form-label-group">
+        <input type="search"
+               id="search-input"
+               class="form-control ds-input"
+               style="margin-bottom: 0.5rem"
+               placeholder="Search"
+               data-url="{% url 'glasgo:search_attractions' %}" />
+        <label for="search-input">Search</label>
+    </div>
 
     <!-- Results -->
     <div id="search-results">

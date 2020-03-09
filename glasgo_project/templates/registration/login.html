@@ -5,11 +5,11 @@
 {% endblock %}
 
 {% block content %}
-    <form class="form-signin"
+    <form name="login"
+          class="form-signin centered-form"
           role="form"
           method="post"
-          action="."
-          style="margin: auto; max-width: 32rem">
+          action=".">
         {% csrf_token %}
 
         <div class="text-center mb-4">
