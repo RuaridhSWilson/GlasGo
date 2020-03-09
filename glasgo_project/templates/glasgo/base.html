@@ -6,9 +6,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    {% block meta %}{% endblock %} <!-- apparently needed for the inbuilt redux templates to work -->
 {#    <link rel="icon" href="{% static 'images/favicon.ico' %}">#}
     <!-- Title Block -->
-    <title>GlasGo - {% block title_block %}Welcome{% endblock %}</title>
+    <title>GlasGo - {% block title %}Welcome{% endblock %}</title>
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="stylesheet" href="{% static 'stylesheets/floating-labels.css' %}" type="text/css">
@@ -50,6 +51,7 @@
 
                     <li><span class="navbar-text mr-4">Hi {{ user }}</span></li>
 
+                    <li><a class="btn btn-light btn-sm mt-1 mr-4" href="{% url 'auth_password_change' %}">Change Password</a></li>
                     <li><a class="btn btn-light btn-sm mt-1" href="{% url 'auth_logout' %}?next=/glasgo/">Logout</a></li>
 
                 {% elif not user.is_authenticated %}
@@ -77,7 +79,7 @@
 
         <main role="main" class="col-md-9 ml-sm-auto col-lg-9 px-4">
             <!-- Body Block -->
-            {% block body_block %}{% endblock %}
+            {% block content %}{% endblock %}
         </main>
     </div>
 </div>

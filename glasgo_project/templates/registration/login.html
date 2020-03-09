@@ -1,0 +1,47 @@
+{% extends "glasgo/base.html" %}
+
+{% block title %}
+    Login
+{% endblock %}
+
+{% block content %}
+    <form class="form-signin"
+          role="form"
+          method="post"
+          action="."
+          style="margin: auto; max-width: 32rem">
+        {% csrf_token %}
+
+        <div class="text-center mb-4">
+            <h1 class="h3 mb-3 font-weight-normal">Login</h1>
+            <p>You have to be logged in to add or vote on attractions.</p>
+        </div>
+
+        <div class="form-label-group">
+            <input type="text"
+                   name="username"
+                   id="id_username"
+                   class="form-control"
+                   placeholder="Username"
+                   required
+                   autofocus>
+            <label for="id_username">Username</label>
+        </div>
+        <div class="form-label-group">
+            <input type="password"
+                   name="password"
+                   id="id_password"
+                   class="form-control"
+                   placeholder="Password"
+                   required>
+            <label for="id_password">Password</label>
+        </div>
+        <div class="text-center">
+            <button class="btn btn-primary" type="submit" value="Submit">Log In</button>
+        </div>
+        <div class="text-center mt-2">
+            Don't have an account? <a href="{% url 'registration_register' %}">Register for one now!</a>
+        </div>
+    </form>
+
+{% endblock %}
