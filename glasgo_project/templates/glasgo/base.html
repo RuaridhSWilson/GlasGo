@@ -20,16 +20,16 @@
 
 <header>
     <nav id="top-navbar"
-         class="navbar navbar-expand-sm navbar-light fixed-top p-0"
+         class="navbar navbar-expand-md navbar-light fixed-top p-0"
          style="background-color: #92628D">
-        <div class="container-fluid">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="collapsibleNavbar">
             <ul class="nav navbar-nav p-2">
                 <a class="navbar-brand" href="{% url 'glasgo:home' %}">GlasGo</a>
 
-                <!-- TODO - add GlasGo logo on following line and remove GlasGo text above -->
-                <li><a class="navbar-brand" href="{% url 'glasgo:home' %}">
-                    <img src="GlasGo Logo.png" width="200" height="40" alt="">
-                </a><li>
+                <!-- TODO - add GlasGo logo here and remove GlasGo text above -->
 
                 <li><a class="nav-link" href="{% url 'glasgo:home' %}">Home</a></li>
 
@@ -45,21 +45,20 @@
 
                 {% endif %}
             </ul>
+            <div class="navbar-nav ml-auto">
+            {% if user.is_authenticated %}
 
-            <ul class="nav navbar-nav navbar-right">
-                {% if user.is_authenticated %}
+                <span class="navbar-text m-2">Hi {{ user }}</span>
 
-                    <li><span class="navbar-text mr-4">Hi {{ user }}</span></li>
+                <a class="btn btn-light btn-sm m-2 pt-2 pb-2" href="{% url 'auth_password_change' %}">Change Password</a>
+                <a class="btn btn-light btn-sm m-2 pt-2 pb-2" href="{% url 'auth_logout' %}?next=/glasgo/">Logout</a>
 
-                    <li><a class="btn btn-light btn-sm mt-1 mr-4" href="{% url 'auth_password_change' %}">Change Password</a></li>
-                    <li><a class="btn btn-light btn-sm mt-1" href="{% url 'auth_logout' %}?next=/glasgo/">Logout</a></li>
+            {% elif not user.is_authenticated %}
 
-                {% elif not user.is_authenticated %}
+                <a class="btn btn-light btn-sm m-2 pt-2 pb-2" href="{% url 'auth_login' %}">Login/Register</a>
 
-                    <li><a class="btn btn-light btn-sm" href="{% url 'auth_login' %}">Login/Register</a></li>
-
-                {% endif %}
-            </ul>
+            {% endif %}
+            </div>
         </div>
     </nav>
 </header>
