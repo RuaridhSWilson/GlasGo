@@ -32,10 +32,12 @@ class AttractionView(View):
         except Attraction.DoesNotExist:
             attraction = None
 
-        try:
-            vote = Vote.objects.get(attraction=attraction, user=request.user)
-        except Vote.DoesNotExist:
-            vote = None
+        vote = None
+        if request.user.is_authenticated:
+            try:
+                vote = Vote.objects.get(attraction=attraction, user=request.user)
+            except Vote.DoesNotExist:
+                pass
 
         return render(
             request,
