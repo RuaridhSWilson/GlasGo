@@ -1,6 +1,6 @@
 from django import template
 
-from glasgo.models import Attraction
+from glasgo.models import Attraction, Vote
 
 register = template.Library()
 
@@ -11,4 +11,4 @@ def get_top_ten():
 
 @register.inclusion_tag("glasgo/attractions.html")
 def get_attractions():
-    return {"attractions": Attraction.objects.order_by("added")}
+    return {"attractions": Attraction.objects.order_by("-added")}

@@ -15,4 +15,5 @@ urlpatterns = [
         views.SearchAttractionsView.as_view(),
         name="search_attractions",
     ),
+    path("vote/", views.VoteView.as_view(), name="vote"),
 ]
