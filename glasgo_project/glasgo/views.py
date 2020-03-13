@@ -7,7 +7,7 @@ from django.views import View
 
 from glasgo.forms import AttractionForm
 from glasgo.helper_functions import get_attractions
-from glasgo.models import Attraction, Vote
+from glasgo.models import Attraction, Vote, Tag
 
 
 # Home view
@@ -68,7 +68,8 @@ class AddAttractionView(View):
 
 class SearchView(View):
     def get(self, request):
-        return render(request, "glasgo/search.html")
+        tags = Tag.objects.all()
+        return render(request, "glasgo/search.html", {"tags": tags})
 
 
 class SearchAttractionsView(View):
@@ -78,7 +79,10 @@ class SearchAttractionsView(View):
         else:
             search = ""
 
-        attractions = get_attractions(search)
+        tags = request.GET.getlist("tags[]")
+        print(tags)
+
+        attractions = get_attractions(search, tags)
         return render(request, "glasgo/attractions.html", {"attractions": attractions})
 
 

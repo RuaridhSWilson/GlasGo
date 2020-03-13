@@ -17,6 +17,18 @@
                data-url="{% url 'glasgo:search_attractions' %}" />
         <label for="search-input">Search</label>
     </div>
+    <div class="grid mb-3">
+        {% for tag in tags %}
+            <div class="custom-control custom-checkbox grid-item">
+                <input id="{{ tag.slug }}"
+                       type="checkbox"
+                       class="custom-control-input search-tag">
+                <label class="custom-control-label" for="{{ tag.slug }}">
+                    {{ tag.name }}
+                </label>
+            </div>
+        {% endfor %}
+    </div>
 
     <!-- Results -->
     <div id="search-results">
