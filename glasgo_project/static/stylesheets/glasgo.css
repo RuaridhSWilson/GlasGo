@@ -59,3 +59,15 @@ label.error {
     color: red !important;
     text-align: right;
 }
+
+.grid {
+    display: flex;
+    flex-flow: row wrap;
+    align-content: flex-start;
+}
+
+.grid-item {
+    flex: 1 1 auto;
+    min-width: 16rem;
+    margin: 0.5rem;
+}

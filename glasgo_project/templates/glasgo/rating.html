@@ -1,0 +1,25 @@
+{% if user.is_authenticated %}
+    <button class="btn btn-outline-dark btn-sml vote-btn mr-2
+                {% if vote and vote.like %}active{% endif %}"
+            type="button"
+            data-attraction="{{ attraction.title }}"
+            data-user="{{ user.username }}"
+            data-like="True"
+            data-url="{% url 'glasgo:vote' %}">
+        <i class="fa fa-thumbs-o-up"></i>
+    </button>
+    <span id="rating">
+        {{ attraction.rating }}
+    </span>
+    <button class="btn btn-outline-dark btn-sml vote-btn ml-2
+                {% if vote and not vote.like %}active{% endif %}"
+            type="button"
+            data-attraction="{{ attraction.title }}"
+            data-user="{{ user.username }}"
+            data-like="False"
+            data-url="{% url 'glasgo:vote' %}">
+        <i class="fa fa-thumbs-o-down"></i>
+    </button>
+{% else %}
+    {{ attraction.rating }}
+{% endif %}
