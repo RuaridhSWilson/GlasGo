@@ -7,64 +7,56 @@
 {% endblock %}
 
 {% block content %}
-    
-    <div class="list-group-item">
-
-        <div class="row">
-            <div class="col4" style="padding-left: 0.5rem"></div>
+    <div style="display: flex; flex-direction: column">
+        <div class="row mt-2 mb-2">
             <div class="rounded mx-auto d-block">
                 <img src="{{ attraction.image.url }}"
-                    class="img-fluid"
-                    alt="Image of {{ attraction.title }}"/>
+                     class="img-fluid"
+                     alt="Image of {{ attraction.title }}"
+                     style="border-radius: 1rem"/>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <h2>{{ attraction.title }}</h2>
+            </div>
+            <div id="rating" class="col justify-content-between" style="text-align:center">
+                {% include "glasgo/rating.html" %}
+            </div>
+            <div class="col2 date" style="text-align: right">
+                {{ attraction.time_since_added }}
             </div>
         </div>
 
-            <div class="col" style="display: flex; flex-direction: column">
-                <div class="row mb-1">
-                    <div class="col">
-                        <h2 class="mb-1">{{ attraction.title }}</h2>
-                    </div>
-                    <div class="col" style="text-align:center">
-                        {{ attraction.rating }}
-                    </div>
-                    <div class="col2 date" style="text-align: right">
-                        {{ attraction.time_since_added }}
-                    </div>
-                </div>
-
-                <div class="row mb-1">
-                    <div class="col description-snippet">
-                        {{ attraction.description }}
-                    </div>
-
-                    <div class="col col-lg-3" style="text-align: right">
-                        {{ attraction.location }}
-                    </div>
-                </div>
-
-                <div class="row mb-1">
-                    <div class="col description-snippet">
-                        {% if attraction.link %}
-                            Link: <a href="{{ attraction.link }}">{{ attraction.link }}</a>
-                        {% endif %}
-                    </div>
-                </div>
-
-                <div class="row mb-1" style="margin-top: auto">
-                    <div class="col">
-                        <ul class="list-group list-group-horizontal-sm">
-                            {% for tag in attraction.tags.all %}
-                                <!-- TODO: Make these links to search for that tag. -->
-                                <li class="list-group-item tag-list-item">
-                                    {{ tag.name }}
-                                </li>
-                            {% endfor %}
-                        </ul>
-                    </div>
-                </div>
+        <div class="row mb-1">
+            <div class="col">
+                {{ attraction.description }}
             </div>
 
+            <div class="col col-lg-3" style="text-align: right">
+                {{ attraction.location }}
+            </div>
+        </div>
+
+        <div class="row mb-1">
+            <div class="col">
+                {% if attraction.link %}
+                    Link: <a href="{{ attraction.link }}">{{ attraction.link }}</a>
+                {% endif %}
+            </div>
+        </div>
+
+        <div class="row mb-1" style="margin-top: auto">
+            <div class="col">
+                <ul class="list-group list-group-horizontal-sm">
+                    {% for tag in attraction.tags.all %}
+                        <!-- TODO: Make these links to search for that tag. -->
+                        <li class="list-group-item tag-list-item">
+                            {{ tag.name }}
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
         </div>
     </div>
-    
 {% endblock %}

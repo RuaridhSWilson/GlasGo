@@ -1,6 +1,6 @@
 from django import template
 
-from glasgo.models import Attraction
+from glasgo.models import Attraction, Vote
 
 register = template.Library()
 

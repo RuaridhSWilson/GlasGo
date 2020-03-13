@@ -1,4 +1,4 @@
-from django.db.models.signals import post_save
+from django.db.models.signals import post_save, pre_delete
 from django.dispatch import receiver
 from datetime import datetime
 
@@ -12,7 +12,21 @@ def save_vote(sender, instance, created, **kwargs):
             instance.attraction.rating += 1
         else:
             instance.attraction.rating -= 1
-        instance.attraction.save()
+    else:
+        if instance.like:
+            instance.attraction.rating += 2
+        else:
+            instance.attraction.rating -=2
+    instance.attraction.save()
+
+
+@receiver(pre_delete, sender=Vote)
+def delete_vote(sender, instance, **kwargs):
+    if instance.like:
+        instance.attraction.rating -= 1
+    else:
+        instance.attraction.rating += 1
+    instance.attraction.save()
 
 
 @receiver(post_save, sender=Attraction)
