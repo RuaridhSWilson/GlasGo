@@ -63,16 +63,15 @@ class Attraction(models.Model):
 
     @property
     def time_since_added(self):
-        seconds_since = datetime.now(timezone.utc) - self.added
-        print(self.added)
-        if seconds_since.seconds < 60:          # seconds in a min
+        seconds_since = (datetime.now(timezone.utc) - self.added).total_seconds()
+        if seconds_since < 60:          # seconds in a min
             return "Less than a minute ago"
-        elif seconds_since.seconds < 3600:      # seconds in an hour
-            return f"added {seconds_since.seconds/60:.0f} minutes ago"
-        elif seconds_since.seconds < 86400:     # seconds in a day
-            return f"added {seconds_since.seconds/3600:.0f} hours ago"
-        elif seconds_since.seconds < 31557600:  # seconds in a year
-            return f"added {seconds_since.seconds/86400:.0f} days ago"
+        elif seconds_since < 3600:      # seconds in an hour
+            return f"added {seconds_since/60:.0f} minutes ago"
+        elif seconds_since < 86400:     # seconds in a day
+            return f"added {seconds_since/3600:.0f} hours ago"
+        elif seconds_since < 31557600:  # seconds in a year
+            return f"added {seconds_since/86400:.0f} days ago"
         else:
             return "added over a year ago"
 
