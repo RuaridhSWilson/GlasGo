@@ -94,14 +94,7 @@
             </div>
         </div>
         <!-- TODO: Make these date pickers bootstrappy -->
-        <div class="form-group">
-            {{ form.starts.label_tag }}
-            {% render_field form.starts type="datetime-local" %}
-        </div>
-        <div class="form-group">
-            {{ form.ends.label_tag }}
-            {% render_field form.ends type="datetime-local" %}
-        </div>
+
         <div class="form-group">
             <label for="tags">Tags:</label>
             <select class="custom-select" id="tags" name="tags" multiple required>
