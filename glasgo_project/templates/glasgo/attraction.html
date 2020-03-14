@@ -7,6 +7,10 @@
 {% endblock %}
 
 {% block content %}
+    {% if not attraction.approved %}
+        <h4>An admin still needs to approve this attraction before it is made publicly visible</h1>
+    {% endif %}
+
     <div style="display: flex; flex-direction: column">
         <div class="row mt-2 mb-2">
             <div class="rounded mx-auto d-block">

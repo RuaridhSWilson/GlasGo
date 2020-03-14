@@ -85,6 +85,7 @@ def add_attraction(title, **kwargs):
                 image_file = File(tmp_img)
                 att.image.save(filename, image_file, save=False)
 
+    att.approved = True;
     att.description = kwargs["description"]
     att.location = kwargs["location"]
 
