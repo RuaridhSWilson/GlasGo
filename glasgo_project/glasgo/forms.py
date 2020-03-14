@@ -4,6 +4,7 @@ from glasgo.models import Attraction, Tag
 
 
 class AttractionForm(forms.ModelForm):
+    approved = forms.BooleanField(widget=forms.HiddenInput(), required=False)
     title = forms.CharField(max_length=Attraction.TITLE_MAX_LENGTH)
     slug = forms.CharField(widget=forms.HiddenInput(), required=False)
 

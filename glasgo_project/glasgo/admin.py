@@ -4,7 +4,7 @@ from glasgo.models import Attraction, Tag, Vote
 
 class AttractionAdmin(admin.ModelAdmin):
     prepopulated_fields = {"slug": ("title",)}
-    list_display = ("title", "price_range", "added", "rating")
+    list_display = ("approved", "title", "price_range", "added", "rating")
 
 
 admin.site.register(Attraction, AttractionAdmin)
