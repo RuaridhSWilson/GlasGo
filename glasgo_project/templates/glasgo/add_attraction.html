@@ -115,7 +115,9 @@
             <label for="tags">Tags:</label>
             <select class="custom-select" id="tags" name="tags" multiple required>
                 {% for tag in form.tags.field.choices %}
-                    <option value={{ tag.0 }}>{{ tag.1 }}</option>
+                    {% if tag.1 != "Free" and tag.1 != "Cheap" and tag.1 != "Moderate" and tag.1 != "Expensive" and tag.1 != "Family-friendly" and tag.1 != "Disabled Access" and tag.1 != "Parking" and tag.1 != "Multi-language" %}
+                        <option value={{ tag.0 }}>{{ tag.1 }}</option>
+                    {% endif %}
                 {% endfor %}
             </select>
         </div>
