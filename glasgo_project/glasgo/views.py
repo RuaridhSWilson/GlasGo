@@ -58,6 +58,8 @@ class AddAttractionView(View):
         form = AttractionForm(request.POST, request.FILES)
         if form.is_valid():
             attraction = form.save(commit=True)
+            attraction.add_price_tag()
+            attraction.add_access_tags()
             return redirect(
                 reverse("glasgo:attraction", kwargs={"slug": attraction.slug})
             )

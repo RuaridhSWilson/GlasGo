@@ -15,7 +15,7 @@ class AttractionForm(forms.ModelForm):
     location = forms.TextInput()
 
     price_range = forms.ChoiceField(
-        choices=Attraction.PRICE_RANGE_CHOICES, required=False, #widget=forms.RadioSelect
+        choices=Attraction.PRICE_RANGE_CHOICES, required=False, widget=forms.RadioSelect
     )
 
     family_friendly = forms.BooleanField(required=False, label="Family-friendly")
