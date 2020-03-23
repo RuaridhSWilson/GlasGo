@@ -3,7 +3,7 @@
 {% load glasgo_template_tags %}
 
 {% block title %}
-    Attractions
+    {{ attraction.title }}
 {% endblock %}
 
 {% block content %}
@@ -39,6 +39,22 @@
 
             <div class="col col-lg-3" style="text-align: right">
                 {{ attraction.location }}
+            </div>
+        </div>
+
+        <div class="row mb-1">
+            <div class="col">
+                {% if attraction.starts %}
+                    Starts: {{ attraction.starts }}
+                {% endif %}
+            </div>
+        </div>
+
+        <div class="row mb-1">
+            <div class="col">
+                {% if attraction.ends %}
+                    Ends: {{ attraction.ends }}
+                {% endif %}
             </div>
         </div>
 
