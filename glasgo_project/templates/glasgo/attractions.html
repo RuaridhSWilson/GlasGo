@@ -25,6 +25,21 @@
                                     {{ attraction.description }}
                                 </div>
                             </div>
+
+                            <div class="row mb-1">
+                                <div class="col">
+                                    {% if attraction.starts %}
+                                        Starts: {{ attraction.starts }}
+                                    {% endif %}
+                                </div>
+
+                                <div class="col">
+                                    {% if attraction.ends %}
+                                        Ends: {{ attraction.ends }}
+                                    {% endif %}
+                                </div>
+                            </div>
+
                             <div class="row mb-1" style="margin-top: auto">
                                 <div class="col">
                                     <ul class="list-group list-group-horizontal-sm">
