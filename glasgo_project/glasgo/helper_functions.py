@@ -13,4 +13,4 @@ def get_attractions(contains="", tags=None):
     if contains:
         attractions = attractions.intersection(Attraction.objects.filter(title__icontains=contains, approved=True))
 
-    return attractions.order_by("-added")
+    return attractions.order_by("-rating")
