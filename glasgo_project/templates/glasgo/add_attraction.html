@@ -48,20 +48,27 @@
         </div>
         <div class="form-group">
             {{ form.price_range.label_tag }}
-            {% render_field form.price_range class="custom-select" %}
-            <!-- TODO:Get this working with radio buttons -->
-{#            <label style="padding-right: 1.5rem">Price Range</label>#}
-{#            {% for choice in form.price_range.field.choices %}#}
-{#                <div class="custom-control custom-radio custom-control-inline">#}
-{#                    <input type="radio"#}
-{#                           id="{{ choice.1 }}"#}
-{#                           name="price_range"#}
-{#                           class="custom-control-input">#}
-{#                    <label class="custom-control-label" for="{{ choice.1 }}">{{ choice.1 }}</label>#}
-{#                </div>#}
-{#            {% endfor %}#}
+            {% for choice in form.price_range.field.choices %}
+                <br/>
+                {% if choice.1 == "Free" %}
+                    <input type="radio"
+                           value="{{ choice.0 }}"
+                           id="{{ choice.1 }}"
+                           name="price_range"
+                           checked> {{ choice.1 }}</input>
+                {% else %}
+                    <input type="radio"
+                           value="{{ choice.0 }}"
+                           id="{{ choice.1 }}"
+                           name="price_range"> {{ choice.1 }}</input>
+                {% endif %}
+                {{ choice.choice_label }}
+            {% endfor %}
         </div>
+        <br/>
         <div class="form-group">
+            <label style="padding-right: 1.5rem">Accessibility:</label>
+            <br/>
             <div class="custom-control custom-checkbox">
                 {% render_field form.family_friendly class="custom-control-input" %}
                 <label class="custom-control-label" for="{{ form.family_friendly.id_for_label }}">
@@ -93,6 +100,7 @@
                 </label>
             </div>
         </div>
+
         <!-- TODO: Make these date pickers bootstrappy -->
         <div class="form-group">
             {{ form.starts.label_tag }}
@@ -102,13 +110,19 @@
             {{ form.ends.label_tag }}
             {% render_field form.ends type="datetime-local" %}
         </div>
+
         <div class="form-group">
-            <label for="tags">Tags:</label>
-            <select class="custom-select" id="tags" name="tags" multiple required>
-                {% for tag in form.tags.field.choices %}
-                    <option value={{ tag.0 }}>{{ tag.1 }}</option>
-                {% endfor %}
-            </select>
+            {{ form.tags.label_tag }}
+            {% for tag in form.tags.field.choices %}
+                {% if tag.1 != "Free" and tag.1 != "Cheap" and tag.1 != "Moderate" and tag.1 != "Expensive" and tag.1 != "Family-friendly" and tag.1 != "Disabled Access" and tag.1 != "Parking" and tag.1 != "Multi-language" %}
+                    <div class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input" name="tags" value="{{ tag.0 }}" id="{{ tag.0 }}">
+                        <label class="custom-control-label" for="{{ tag.0 }}">
+                            {{ tag.1 }}
+                        </label>
+                    </div>
+                {% endif %}
+            {% endfor %}
         </div>
 
         <div class="text-center">

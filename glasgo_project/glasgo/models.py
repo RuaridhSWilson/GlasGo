@@ -28,6 +28,7 @@ class Tag(models.Model):
 
 class Attraction(models.Model):
     TITLE_MAX_LENGTH = 128
+    approved = models.BooleanField(default=False)
     title = models.CharField(max_length=TITLE_MAX_LENGTH, unique=True)
     slug = models.SlugField(unique=True)
 

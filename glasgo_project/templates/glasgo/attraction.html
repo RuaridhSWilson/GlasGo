@@ -3,10 +3,14 @@
 {% load glasgo_template_tags %}
 
 {% block title %}
-    Attractions
+    {{ attraction.title }}
 {% endblock %}
 
 {% block content %}
+    {% if not attraction.approved %}
+        <h4>An admin still needs to approve this attraction before it is made publicly visible</h1>
+    {% endif %}
+
     <div style="display: flex; flex-direction: column">
         <div class="row mt-2 mb-2">
             <div class="rounded mx-auto d-block">
@@ -35,6 +39,22 @@
 
             <div class="col col-lg-3" style="text-align: right">
                 {{ attraction.location }}
+            </div>
+        </div>
+
+        <div class="row mb-1">
+            <div class="col">
+                {% if attraction.starts %}
+                    Starts: {{ attraction.starts }}
+                {% endif %}
+            </div>
+        </div>
+
+        <div class="row mb-1">
+            <div class="col">
+                {% if attraction.ends %}
+                    Ends: {{ attraction.ends }}
+                {% endif %}
             </div>
         </div>
 
