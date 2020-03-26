@@ -60,6 +60,14 @@ label.error {
     text-align: right;
 }
 
+label#id_image-error {
+    position: absolute;
+    right: 6rem;
+    z-index: 1;
+    height: inherit;
+    line-height: calc(1.5em + .75rem + 2px);
+}
+
 .grid {
     display: flex;
     flex-flow: row wrap;

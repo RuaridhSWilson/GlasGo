@@ -1,3 +1,4 @@
+import pytz
 from django.db.models.signals import post_save, pre_delete
 from django.dispatch import receiver
 from datetime import datetime
@@ -32,5 +33,5 @@ def delete_vote(sender, instance, **kwargs):
 @receiver(post_save, sender=Attraction)
 def save_added_time(sender, instance, created, **kwargs):
     if created:
-        instance.added = datetime.now()
+        instance.added = datetime.now(pytz.utc)
         instance.save()
