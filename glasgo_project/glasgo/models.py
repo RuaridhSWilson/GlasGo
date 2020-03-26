@@ -1,9 +1,10 @@
 import os
+from datetime import datetime
 
+import pytz
+from django.contrib.auth.models import User
 from django.db import models
 from django.template.defaultfilters import slugify
-from django.contrib.auth.models import User
-from datetime import timedelta, datetime, timezone
 
 
 def image_path(instance, filename):
@@ -64,7 +65,7 @@ class Attraction(models.Model):
 
     @property
     def time_since_added(self):
-        seconds_since = datetime.now(timezone.utc) - self.added
+        seconds_since = datetime.now(pytz.utc) - self.added
         print(self.added)
         if seconds_since.seconds < 60:          # seconds in a min
             return "Less than a minute ago"
