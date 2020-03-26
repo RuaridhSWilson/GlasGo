@@ -2,6 +2,9 @@ $(document).ready(function () {
 
     trim_description_snippets();
 
+    $("#starts").datetimepicker({format: "Y-m-d H:i"});
+    $("#ends").datetimepicker({format: "Y-m-d H:i"});
+
     $(window).resize(pad_navbar());
     $(window).load(pad_navbar()); // TODO: Figure out why this is causing a TypeError
 

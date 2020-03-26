@@ -101,14 +101,13 @@
             </div>
         </div>
 
-        <!-- TODO: Make these date pickers bootstrappy -->
-        <div class="form-group">
+        <div class="form-label-group">
+            {% render_field form.starts class="form-control" id="starts" placeholder="Starts" type="text" %}
             {{ form.starts.label_tag }}
-            {% render_field form.starts type="datetime-local" %}
         </div>
-        <div class="form-group">
+        <div class="form-label-group">
+            {% render_field form.ends class="form-control" id="ends" placeholder="Ends" type="text" %}
             {{ form.ends.label_tag }}
-            {% render_field form.ends type="datetime-local" %}
         </div>
 
         <div class="form-group">

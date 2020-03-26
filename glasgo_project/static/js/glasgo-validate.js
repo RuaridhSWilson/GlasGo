@@ -9,8 +9,8 @@ $(document).ready(function () {
         return /^[a-zA-Z0-9_]+$/.test(value);
     });
 
-    jQuery.validator.addMethod("ends_after_start", function (value, element) {
-        return value > element;
+    jQuery.validator.addMethod("ends_after_start", function (value, element, starts) {
+        return new Date(value) > new Date($(starts).val());
     });
 
     $("form[name='login']").validate({
