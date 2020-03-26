@@ -34,8 +34,9 @@
         </div>
         <div class="form-group">
             <div class="custom-file">
-                {% render_field form.image class="custom-file-input" %}
                 <label class="custom-file-label" for="{{ form.image.id_for_label }}">Image</label>
+                {% render_field form.image class="custom-file-input" %}
+
             </div>
         </div>
         <div class="form-label-group">
@@ -55,12 +56,14 @@
                            value="{{ choice.0 }}"
                            id="{{ choice.1 }}"
                            name="price_range"
-                           checked> {{ choice.1 }}</input>
+                           checked>
+                    {{ choice.1 }}
                 {% else %}
                     <input type="radio"
                            value="{{ choice.0 }}"
                            id="{{ choice.1 }}"
-                           name="price_range"> {{ choice.1 }}</input>
+                           name="price_range">
+                    {{ choice.1 }}
                 {% endif %}
                 {{ choice.choice_label }}
             {% endfor %}

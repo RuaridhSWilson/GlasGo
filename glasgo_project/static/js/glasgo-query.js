@@ -5,6 +5,8 @@ $(document).ready(function () {
     $("#starts").datetimepicker({format: "Y-m-d H:i"});
     $("#ends").datetimepicker({format: "Y-m-d H:i"});
 
+    bsCustomFileInput.init();
+
     $(window).resize(pad_navbar());
     $(window).load(pad_navbar()); // TODO: Figure out why this is causing a TypeError
 
