@@ -66,7 +66,6 @@ class Attraction(models.Model):
     @property
     def time_since_added(self):
         seconds_since = datetime.now(pytz.utc) - self.added
-        print(self.added)
         if seconds_since.seconds < 60:          # seconds in a min
             return "Less than a minute ago"
         elif seconds_since.seconds < 3600:      # seconds in an hour
