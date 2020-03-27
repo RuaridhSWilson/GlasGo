@@ -8,6 +8,7 @@ tags = {
     "Park": [],
     "Sports": [],
     "Monument": [],
+    "Event":[],
     "Free": ["Cheap", "Moderate", "Expensive"],
     "Cheap": ["Free", "Moderate", "Expensive"],
     "Moderate": ["Free", "Cheap", "Expensive"],

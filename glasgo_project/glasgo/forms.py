@@ -34,6 +34,7 @@ class AttractionForm(forms.ModelForm):
         choices=[(tag.id, tag.name) for tag in Tag.objects.all()],
         widget=forms.CheckboxSelectMultiple,
         label="Tags",
+        required=False,
     )
 
     class Meta:
