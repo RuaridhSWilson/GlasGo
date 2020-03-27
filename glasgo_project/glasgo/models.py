@@ -99,6 +99,13 @@ class Attraction(models.Model):
             else:
                 self.tags.remove(tag)
 
+    def add_event_tag(self):
+        tag = Tag.objects.get(name="Event")
+        if self.starts != None or self.ends != None:
+            self.tags.add(tag)
+        else:
+            self.tags.remove(tag)
+
     # Override
     def save(self, *args, **kwargs):
         self.slug = slugify(self.title)
