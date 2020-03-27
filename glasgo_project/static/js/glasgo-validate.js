@@ -10,7 +10,11 @@ $(document).ready(function () {
     });
 
     jQuery.validator.addMethod("ends_after_start", function (value, element, starts) {
-        return new Date(value) > new Date($(starts).val());
+        if (value.length > 0 && $(starts).val().length > 0) {
+            return new Date(value) > new Date($(starts).val());
+        } else {
+            return true;
+        }
     });
 
     $("form[name='login']").validate({
