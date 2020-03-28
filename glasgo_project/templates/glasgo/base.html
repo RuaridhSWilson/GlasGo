@@ -6,7 +6,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    {% block meta %}{% endblock %} <!-- apparently needed for the inbuilt redux templates to work -->
+    {% block meta %}{% endblock %} <!-- Needed for the inbuilt redux templates to work -->
     <link rel="icon" href="{% static 'icons/favicon.ico' %}">
     <link rel="apple-touch-icon" sizes="180x180" href="{% static 'icons/apple-touch-icon.png' %}">
     <link rel="icon" type="image/png" sizes="32x32" href="{% static 'icons/favicon-32x32.png' %}">
@@ -25,22 +25,28 @@
 <body style="padding-top: 60px">
 
 <header>
+    <!-- Navbar -->
     <nav id="top-navbar"
          class="navbar navbar-expand-md navbar-light fixed-top p-0"
          style="background-color: #92628D">
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
             <span class="navbar-toggler-icon"></span>
         </button>
+        <!-- Left of Navbar -->
         <div class="collapse navbar-collapse" id="collapsibleNavbar">
             <ul class="nav navbar-nav p-2">
+                <!-- GlasGo logo (links to Home page) -->
                 <a class="navbar-brand pt-0 pb-0" href="{% url 'glasgo:home' %}">
                     <img src="{% static 'images/logo.png' %}" alt="GlasGo" height="40">
                 </a>
 
+                <!-- Link to Home page -->
                 <li><a class="nav-link" href="{% url 'glasgo:home' %}">Home</a></li>
 
+                <!-- Link to Search page -->
                 <li><a class="nav-link" href="{% url 'glasgo:search' %}">Search</a></li>
 
+                <!-- Link to Add Attraction page (or Login page if user is not logged in) -->
                 {% if user.is_authenticated %}
 
                     <li><a class="nav-link" href="{% url 'glasgo:add' %}">Add Attraction</a></li>
@@ -51,15 +57,20 @@
 
                 {% endif %}
             </ul>
+
+            <!-- Right of Navbar -->
             <div class="navbar-nav ml-auto">
             {% if user.is_authenticated %}
 
-                <span class="navbar-text m-2">Hi {{ user }}</span>
+                <!-- If the user is logged in display "Hi User" text, link to Change Password page and Logout button -->
 
+                <span class="navbar-text m-2">Hi {{ user }}</span>
                 <a class="btn btn-light btn-sm m-2 pt-2 pb-2" href="{% url 'auth_password_change' %}">Change Password</a>
                 <a class="btn btn-light btn-sm m-2 pt-2 pb-2" href="{% url 'auth_logout' %}?next=/glasgo/">Logout</a>
 
             {% elif not user.is_authenticated %}
+
+                <!-- If the user is not logged in display Login/Register button (links to Login Page) -->
 
                 <a class="btn btn-light btn-sm m-2 pt-2 pb-2" href="{% url 'auth_login' %}">Login/Register</a>
 
@@ -69,6 +80,7 @@
     </nav>
 </header>
 
+<!-- Top 10 Attractions Sidebar -->
 <div class="container-fluid">
     <div class="row">
         <nav class="col-md-3 d-none d-md-block sidebar">
@@ -91,7 +103,7 @@
 
 <br><br><br><br><br><br><br><br><br>
 <div>
-    <!-- Footer Block -->
+    <!-- Footer Block - contains link to About page -->
     {% block footer_block %}
     <footer>
         <a href="{% url 'glasgo:about' %}">About Us</a>

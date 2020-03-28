@@ -1,4 +1,5 @@
 {% if user.is_authenticated %}
+    <!-- If the user is logged in display upvote button -->
     <button class="btn btn-outline-dark btn-sml vote-btn mr-2
                 {% if vote and vote.like %}active{% endif %}"
             type="button"
@@ -8,9 +9,13 @@
             data-url="{% url 'glasgo:vote' %}">
         <i class="fa fa-thumbs-o-up"></i>
     </button>
+
+    <!-- If the user is logged in display attraction rating -->
     <span id="rating">
         {{ attraction.rating }}
     </span>
+
+    <!-- If the user is logged in display downvote button -->
     <button class="btn btn-outline-dark btn-sml vote-btn ml-2
                 {% if vote and not vote.like %}active{% endif %}"
             type="button"
@@ -21,5 +26,6 @@
         <i class="fa fa-thumbs-o-down"></i>
     </button>
 {% else %}
+    <!-- If the user is not logged in display only the attraction rating -->
     {{ attraction.rating }}
 {% endif %}

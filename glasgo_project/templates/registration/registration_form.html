@@ -5,6 +5,7 @@
 {% endblock %}
 
 {% block content %}
+    <!-- Register Form -->
     <form name="register"
           class="form-signin centered-form"
           role="form"
@@ -12,10 +13,12 @@
           action=".">
         {% csrf_token %}
 
+        <!-- Heading -->
         <div class="text-center mb-4">
             <h3 class="h3 mb-3 font-weight-normal">Register</h3>
         </div>
 
+        <!-- Username Text Field -->
         <div class="form-label-group">
             <input type="text"
                    name="username"
@@ -28,6 +31,7 @@
             <label for="username">Username</label>
         </div>
 
+        <!-- Email Text Field -->
         <div class="form-label-group">
             <input type="email"
                    name="email"
@@ -38,6 +42,7 @@
             <label for="email">Email</label>
         </div>
 
+        <!-- Password Text Field -->
         <div class="form-label-group">
             <input type="password"
                    name="password1"
@@ -49,6 +54,7 @@
             <label for="password1">Password</label>
         </div>
 
+        <!-- Confirm Password Text Field -->
         <div class="form-label-group">
             <input type="password"
                    name="password2"
@@ -60,6 +66,7 @@
             <label for="password2">Repeat Password</label>
         </div>
 
+        <!-- Submit Button -->
         <div class="text-center">
             <button class="btn btn-primary" type="submit" value="Submit">Register</button>
         </div>

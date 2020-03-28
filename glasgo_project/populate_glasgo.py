@@ -24,18 +24,22 @@ from population_data.users import users
 TEMP_DIR = os.path.join(settings.MEDIA_DIR, "temp")
 
 
+# Populate tags
 def populate_tags():
     for tag in tags.keys():
         add_tag(tag)
+    # Add mutually exclusive tags separately
     for tag, mutex_tags in tags.items():
         add_mutex_tags(tag, mutex_tags)
 
 
+# Populate attractions
 def populate_attractions():
     for attraction, kwargs in attractions.items():
         add_attraction(attraction, **kwargs)
 
 
+# Populate users
 def populate_users():
     for username in users:
         user, cond = User.objects.get_or_create(username=username)
@@ -44,6 +48,7 @@ def populate_users():
             user.save()
 
 
+# Populate votes - generate random scores for each attraction
 def populate_votes():
     random.seed(1)
     max_id = Attraction.objects.all().aggregate(max_id=Max("id"))["max_id"]
@@ -60,10 +65,12 @@ def populate_votes():
                 )
 
 
+# Create a tag object
 def add_tag(name):
     Tag.objects.get_or_create(name=name)[0].save()
 
 
+# Create tag objects which are mutually exclusive with each other
 def add_mutex_tags(name, mutex_tags=()):
     tag = Tag.objects.get_or_create(name=name)[0]
     mutex_tag_ids = (Tag.objects.get(name=mutex_tag).id for mutex_tag in mutex_tags)
@@ -71,6 +78,7 @@ def add_mutex_tags(name, mutex_tags=()):
     tag.save()
 
 
+# Create an attraction object whose fields are given as arguments
 def add_attraction(title, **kwargs):
     att, new = Attraction.objects.get_or_create(title=title)
 
@@ -105,6 +113,7 @@ def add_attraction(title, **kwargs):
     att.save()
 
 
+# Print the status of the population to the console as each model is populated
 if __name__ == "__main__":
     print("Populating GlasGo Database . . . ")
 

@@ -5,10 +5,12 @@ $(document).ready(function () {
         success: "valid",
     });
 
+    // Returns true (valid) if the entered username contains no special characters
     jQuery.validator.addMethod("username_chars", function (value, element) {
         return /^[a-zA-Z0-9_]+$/.test(value);
     });
 
+    // Returns true (valid) if no dates were chosen or if the End Date is after the Start Date
     jQuery.validator.addMethod("ends_after_start", function (value, element, starts) {
         if (value.length > 0 && $(starts).val().length > 0) {
             return new Date(value) > new Date($(starts).val());
@@ -17,6 +19,9 @@ $(document).ready(function () {
         }
     });
 
+    // Validate the Login form:
+    // Username is required, must be at most 30 characters and contain no special characters
+    // Password is required
     $("form[name='login']").validate({
         rules: {
             username: {
@@ -39,6 +44,11 @@ $(document).ready(function () {
         }
     });
 
+    // Validate the Register form:
+    // Username is required, must be at most 30 characters and contain no special characters
+    // Email must be a valid email address and at most 75 characters
+    // Password is required and must be between 6 and 128 characters
+    // Confirm Password is required and must match the Password
     $("form[name='register']").validate({
         rules: {
             username: {
@@ -86,6 +96,10 @@ $(document).ready(function () {
         }
     });
 
+    // Validate the Change Password form:
+    // Old Password is required
+    // New Password is required and must be between 6 and 128 characters
+    // Confirm New Password is required and must match the New Password
     $("form[name='password_change']").validate({
         rules: {
             old_password: {
@@ -120,6 +134,14 @@ $(document).ready(function () {
         }
     });
 
+    // Validate the Add Attraction form:
+    // Title is required and must be at most 128 characters
+    // Link must be a valid URL
+    // Image is required
+    // Description is required
+    // Location is required
+    // Start Date must be a valid date
+    // End Date must be a valid date and must be later than the Start Date
     $("form[name='add_attraction']").validate({
         rules: {
             title: {

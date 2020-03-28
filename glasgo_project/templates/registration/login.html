@@ -5,6 +5,7 @@
 {% endblock %}
 
 {% block content %}
+    <!-- Login Form -->
     <form name="login"
           class="form-signin centered-form"
           role="form"
@@ -12,11 +13,13 @@
           action=".">
         {% csrf_token %}
 
+        <!-- Heading -->
         <div class="text-center mb-4">
             <h1 class="h3 mb-3 font-weight-normal">Login</h1>
             <p>You have to be logged in to add or vote on attractions.</p>
         </div>
 
+        <!-- Username Text Field -->
         <div class="form-label-group">
             <input type="text"
                    name="username"
@@ -27,6 +30,8 @@
                    autofocus>
             <label for="id_username">Username</label>
         </div>
+
+        <!-- Password Text Field -->
         <div class="form-label-group">
             <input type="password"
                    name="password"
@@ -36,9 +41,13 @@
                    required>
             <label for="id_password">Password</label>
         </div>
+
+        <!-- Submit Button -->
         <div class="text-center">
             <button class="btn btn-primary" type="submit" value="Submit">Log In</button>
         </div>
+
+        <!-- Link to Ragister page -->
         <div class="text-center mt-2">
             Don't have an account? <a href="{% url 'registration_register' %}">Register for one now!</a>
         </div>
