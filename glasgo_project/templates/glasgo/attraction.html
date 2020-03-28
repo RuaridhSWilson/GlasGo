@@ -8,11 +8,13 @@
 
 {% block content %}
     {% if not attraction.approved %}
+        <!-- Heading which shows if the attraction is not yet admin-approved -->
         <h4>An admin still needs to approve this attraction before it is made publicly visible</h4>
     {% endif %}
 
     <div style="display: flex; flex-direction: column">
         <div class="row mt-2 mb-2">
+            <!-- Attraction Image -->
             <div class="rounded mx-auto d-block">
                 <img src="{{ attraction.image.url }}"
                      class="img-fluid"
@@ -21,28 +23,34 @@
             </div>
         </div>
         <div class="row">
+            <!-- Attraction Title -->
             <div class="col">
                 <h2>{{ attraction.title }}</h2>
             </div>
+            <!-- Attraction Rating (rating.html) -->
             <div id="rating" class="col justify-content-between" style="text-align:center">
                 {% include "glasgo/rating.html" %}
             </div>
+            <!-- Time since attraction was added -->
             <div class="col2 date" style="text-align: right">
                 {{ attraction.time_since_added }}
             </div>
         </div>
 
         <div class="row mb-1">
+            <!-- Attraction Description -->
             <div class="col">
                 {{ attraction.description }}
             </div>
 
+            <!-- Attraction Location -->
             <div class="col col-lg-3" style="text-align: right">
                 {{ attraction.location }}
             </div>
         </div>
 
         <div class="row mb-1">
+            <!-- Event Start Time (if it's an event) -->
             <div class="col">
                 {% if attraction.starts %}
                     Starts: {{ attraction.starts }}
@@ -51,6 +59,7 @@
         </div>
 
         <div class="row mb-1">
+            <!-- Event End Time (if it's an event) -->
             <div class="col">
                 {% if attraction.ends %}
                     Ends: {{ attraction.ends }}
@@ -59,6 +68,7 @@
         </div>
 
         <div class="row mb-1">
+            <!-- Link to the attraction's website -->
             <div class="col">
                 {% if attraction.link %}
                     Link: <a href="{{ attraction.link }}">{{ attraction.link }}</a>
@@ -67,10 +77,10 @@
         </div>
 
         <div class="row mb-1" style="margin-top: auto">
+            <!-- Attraction Tags -->
             <div class="col">
                 <ul class="list-group list-group-horizontal-sm">
                     {% for tag in attraction.tags.all %}
-                        <!-- TODO: Make these links to search for that tag. -->
                         <li class="list-group-item tag-list-item">
                             {{ tag.name }}
                         </li>

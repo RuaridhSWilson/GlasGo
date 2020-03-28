@@ -7,6 +7,7 @@
 {% endblock %}
 
 {% block content %}
+    <!-- Add Attraction Form -->
     <form name="add_attraction"
           class="form-signin"
           role="form"
@@ -15,23 +16,30 @@
           enctype="multipart/form-data">
         {% csrf_token %}
 
+        <!-- Heading -->
         <div class="text-center mb-4">
             <h1 class="h3 mb-3 font-weight-normal">Add an Attraction</h1>
             <p>Your submission will be reviewed by an admin before being added to the public gallery.</p>
         </div>
 
+        <!-- Hidden Fields -->
         {% for hidden in form.hidden_fields %}
             {{ hidden }}
         {% endfor %}
 
+        <!-- Title Text Field -->
         <div class="form-label-group">
             {% render_field form.title class="form-control" placeholder="Title" %}
             {{ form.title.label_tag }}
         </div>
+
+        <!-- Website Text Field (URL) -->
         <div class="form-label-group">
             {% render_field form.link class="form-control" placeholder="Website" %}
             {{ form.link.label_tag }}
         </div>
+
+        <!-- Image Field -->
         <div class="form-group">
             <div class="custom-file">
                 <label class="custom-file-label" for="{{ form.image.id_for_label }}">Image</label>
@@ -39,14 +47,20 @@
 
             </div>
         </div>
+
+        <!-- Description Text Field -->
         <div class="form-label-group">
             {% render_field form.description class="form-control" placeholder="Description" rows="4" %}
             {{ form.description.label_tag }}
         </div>
+
+        <!-- Location Text Field -->
         <div class="form-label-group">
             {% render_field form.location class="form-control" placeholder="Location" rows="4" %}
             {{ form.location.label_tag }}
         </div>
+
+        <!-- Price Radio Buttons (Free is checked by default) -->
         <div class="form-group">
             {{ form.price_range.label_tag }}
             {% for choice in form.price_range.field.choices %}
@@ -69,6 +83,8 @@
             {% endfor %}
         </div>
         <br/>
+
+        <!-- Accessibility Checkboxes -->
         <div class="form-group">
             <label style="padding-right: 1.5rem">Accessibility:</label>
             <br/>
@@ -104,18 +120,23 @@
             </div>
         </div>
 
+        <!-- Start Date DatePicker -->
         <div class="form-label-group">
             {% render_field form.starts class="form-control" id="starts" placeholder="Starts" type="text" %}
             {{ form.starts.label_tag }}
         </div>
+
+        <!-- End Date DatePicker -->
         <div class="form-label-group">
             {% render_field form.ends class="form-control" id="ends" placeholder="Ends" type="text" %}
             {{ form.ends.label_tag }}
         </div>
 
+        <!-- Tags Checkboxes -->
         <div class="form-group">
             {{ form.tags.label_tag }}
             {% for tag in form.tags.field.choices %}
+                <!-- Display all tags except Event and the Price & Accessibility tags -->
                 {% if tag.1 != "Free" and tag.1 != "Cheap" and tag.1 != "Moderate" and tag.1 != "Expensive" and tag.1 != "Family-friendly" and tag.1 != "Disabled Access" and tag.1 != "Parking" and tag.1 != "Multi-language" and tag.1 != "Event" %}
                     <div class="custom-control custom-checkbox">
                         <input type="checkbox" class="custom-control-input" name="tags" value="{{ tag.0 }}" id="{{ tag.0 }}">
@@ -127,6 +148,7 @@
             {% endfor %}
         </div>
 
+        <!-- Submit Button -->
         <div class="text-center">
             <button class="btn btn-primary" type="submit" name="submit">Submit</button>
         </div>

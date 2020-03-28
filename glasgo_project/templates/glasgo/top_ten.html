@@ -1,15 +1,18 @@
 <div class="list-group flex-column">
     {% if top_ten %}
+        <!-- Iterate through the top 10 highest rated attractions and put them in a vertical list group -->
         {% for attraction in top_ten %}
             <a class="list-group-item list-group-item-action"
                href="{% url 'glasgo:attraction' attraction.slug %}">
                 <div class="row">
+                    <!-- Attraction thumbnail -->
                     <div class="col-3 sidebar-thumbnail-col">
                         <div class="thumbnail-48">
                             <img src="{{ attraction.image.url }}"
                                  alt="Image of {{ attraction.title }}">
                         </div>
                     </div>
+                    <!-- Attraction title and rating -->
                     <div class="col" style="padding-left: 5px">
                         <div class="d-flex w-100 justify-content-between">
                             <h5 class="mb-1">{{ attraction.title }}</h5>
