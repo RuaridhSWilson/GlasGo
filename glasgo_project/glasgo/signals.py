@@ -6,6 +6,7 @@ from datetime import datetime
 from glasgo.models import Vote, Attraction
 
 
+# Adds a vote to the current attraction and updates the total rating
 @receiver(post_save, sender=Vote)
 def save_vote(sender, instance, created, **kwargs):
     if created:
@@ -21,6 +22,7 @@ def save_vote(sender, instance, created, **kwargs):
     instance.attraction.save()
 
 
+# Removes a vote from the current attraction and updates the total rating
 @receiver(pre_delete, sender=Vote)
 def delete_vote(sender, instance, **kwargs):
     if instance.like:
@@ -30,6 +32,7 @@ def delete_vote(sender, instance, **kwargs):
     instance.attraction.save()
 
 
+# Records the time the current attraction was submitted (in the Attraction's added field)
 @receiver(post_save, sender=Attraction)
 def save_added_time(sender, instance, created, **kwargs):
     if created:
