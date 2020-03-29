@@ -39,6 +39,11 @@
     font-size: 0.8rem;
 }
 
+.rating {
+    text-align: right;
+    padding-right: 1rem;
+}
+
 .date {
     display: flex;
     flex-direction: column;

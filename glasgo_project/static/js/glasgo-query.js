@@ -2,7 +2,7 @@ $(document).ready(function () {
 
     trim_description_snippets();
 
-    // Declare the format of the DateTimePickers
+    // Add DateTimePickers to starts and ends form fields
     $("#starts").datetimepicker({format: "Y-m-d H:i"});
     $("#ends").datetimepicker({format: "Y-m-d H:i"});
 

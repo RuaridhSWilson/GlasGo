@@ -12,7 +12,7 @@
 
     <!-- If the user is logged in display attraction rating -->
     <span id="rating">
-        {{ attraction.rating }}
+        {{ attraction.rating }} point{{ attraction.rating|pluralize }}
     </span>
 
     <!-- If the user is logged in display downvote button -->
@@ -27,5 +27,5 @@
     </button>
 {% else %}
     <!-- If the user is not logged in display only the attraction rating -->
-    {{ attraction.rating }}
+    {{ attraction.rating }} point{{ attraction.rating|pluralize }}
 {% endif %}
