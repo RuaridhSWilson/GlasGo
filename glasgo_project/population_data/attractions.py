@@ -23,6 +23,7 @@ attractions = {
         "tags": ["Cultural Landmark", "Monument",],
     },
     "Kelvingrove Art Gallery and Museum": {
+        "link": "https://www.glasgowlife.org.uk/museums/venues/kelvingrove-art-gallery-and-museum",
         "image": "https://peoplemakeglasgow.com/images/Things_to_do/Museums_and_galleries/Kelvingrove-995.jpg",
         "description": "Kelvingrove Art Gallery and Museum is a museum and art gallery in Glasgow, Scotland. It reopened in 2006 after a three-year refurbishment and since then has been one of Scotland's most popular visitor attractions. The museum has 22 galleries, housing a range of exhibits, including Renaissance art, taxidermy, and artifacts from ancient Egypt.",
         "location": "Kelvingrove Art Gallery and Museum, Argyle St, Glasgow, G3 8AG",
@@ -67,6 +68,7 @@ attractions = {
         "tags": ["Natural Landmark", "Cultural Landmark", "Park",],
     },
     "The Riverside Museum of Transport and Travel": {
+        "link": "https://www.glasgowlife.org.uk/museums/venues/riverside-museum",
         "image": "https://media-cdn.tripadvisor.com/media/photo-s/05/29/a9/44/the-riverside-museum.jpg",
         "description": "Riverside Museum is Glasgow's award-winning transport museum. With over 3,000 objects on display there's everything from skateboards to locomotives, paintings to prams and cars to a Stormtrooper. There are over 90 large touch screens panels full of images, memories and films that tell the fascinating stories behind the objects.",
         "location": "100 Pointhouse Place, Glasgow, G3 8RS",
@@ -78,6 +80,7 @@ attractions = {
         "tags": ["Cultural Landmark", "Museum"],
     },
     "University of Glasgow": {
+        "link": "https://www.gla.ac.uk/",
         "image": "https://www.telegraph.co.uk/content/dam/education/2016/08/01/21590241universityofglasgowm-xlarge_trans_NvBQzQNjv4BqvHvVfV1SJqTMKlHaE5FBlnzInX02uMnPr3P1UZfzc14.jpg",
         "description": "The University of Glasgow is a public research university in Glasgow, Scotland. Founded by papal bull in 1451, it is the fourth-oldest university in the English-speaking world and one of Scotland's four ancient universities. Along with the universities of Edinburgh, Aberdeen, and St Andrews, the university was part of the Scottish Enlightenment during the 18th century. ",
         "location": "University Avenue, West End, Glasgow, G12 8QQ",
@@ -89,6 +92,7 @@ attractions = {
         "tags": ["Cultural Landmark", "Historic",],
     },
     "Tennents Wellpark Brewery": {
+        "link": "https://www.tennentstours.com/",
         "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/23/Tennents_Brewery.jpg/1200px-Tennents_Brewery.jpg",
         "description": "Wellpark Brewery in Glasgow is home to more than 450 years of brewing tradition and award winning beers. This is a chance to learn about the rich heritage of one of the country's most loved brands as well as about the production processes that have taken place at Wellpark from through the centuries up to today. ",
         "location": "161 Duke Street, Glasgow, G31 1JD",
@@ -111,6 +115,7 @@ attractions = {
         "tags": ["Cultural Landmark", "Park", "Historic",],
     },
     "The Mackintosh House": {
+        "link": "https://www.gla.ac.uk/hunterian/collections/permanentdisplays/themackintoshhouse/",
         "image": "https://www.gla.ac.uk/media/Media_531136_smxx.jpg",
         "description": "The Mackintosh House is a meticulous reassemblage of the principal interiors from the Mackintoshes’ Glasgow home. The couple lived at 78 Southpark Avenue (originally 6 Florentine Terrace) from 1906 to 1914. Substantial alterations were made in 1906 as Mackintosh remodelled the proportions and natural lighting of the Victorian end-of-terrace house. The principal interiors were decorated in his distinctive style, remarkable then, and now, for the disciplined austerity of the furnishings and decoration.  ",
         "location": "82 Hillhead Street, Glasgow, G12 8QE",
@@ -122,6 +127,7 @@ attractions = {
         "tags": ["Cultural Landmark", "Historic",],
     },
     "Glasgow Science Centre": {
+        "link": "https://www.glasgowsciencecentre.org/",
         "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a6/Glasgow_Science_Centre_and_Tower.jpg/1024px-Glasgow_Science_Centre_and_Tower.jpg",
         "description": "Glasgow Science Centre is a visitor attraction located in the Clyde Waterfront Regeneration area on the south bank of the River Clyde in Glasgow, Scotland. Queen Elizabeth II opened Glasgow Science Centre on 5 July 2001. It is one of Scotland's most popular paid-for visitor attractions. It is a purpose-built science centre composed of three principal buildings: Science Mall, Glasgow Tower and an IMAX cinema.  ",
         "location": "50 Pacific Quay, Glasgow, G51 1EA",
@@ -133,6 +139,7 @@ attractions = {
         "tags": ["Museum",],
     },
     "The Tenement House": {
+        "link": "https://www.nts.org.uk/visit/places/the-tenement-house",
         "image": "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fkingfishervisitorguides.com%2Fglasgow%2Fwp-content%2Fuploads%2F2016%2F08%2FThe-Tenement-House_.jpg&f=1&nofb=1",
         "description": "The Tenement House is a National Trust for Scotland property in Glasgow's City Centre. With 1892 original features it provides a rare glimpse into life in Glasgow in the early 20th century. ",
         "location": "145 Buccleuch Street, Glasgow, G3 6QN",
@@ -166,6 +173,7 @@ attractions = {
         "tags": ["Park", "Historic",],
     },
     "Glasgow Police Museum": {
+        "link": "http://www.policemuseum.org.uk/",
         "image": "https://peoplemakeglasgow.com/images/Top_Reasons_To_Visit/Glasgow_Police_Museum.jpg",
         "description": "The Glasgow Police Museum illustrates the history of the Glasgow Police 1779 - 1975, through artifacts, stories and images.",
         "location": "30 Bell Street, Glasgow, G1 1LG",
@@ -177,6 +185,7 @@ attractions = {
         "tags": ["Museum",],
     },
     "Hunterian Museum": {
+        "link": "https://www.gla.ac.uk/hunterian/",
         "image": "https://www.gla.ac.uk/media/Media_591822_smxx.jpg",
         "description": "The Hunterian is Scotland's oldest public museum and home to one of the largest collections outside the National Museums. The Hunterian is one of the leading university museums in the world and its collections have been Recognised as a Collection of National Significance. It is one of Scotland’s most important cultural assets.‌",
         "location": "Glasgow University, University Avenue, Glasgow, G12 8QQ, ",
