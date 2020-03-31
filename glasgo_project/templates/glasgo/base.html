@@ -101,12 +101,16 @@
     </div>
 </div>
 
-<br><br><br><br><br><br><br><br><br>
+<br><br><br>
 <div>
     <!-- Footer Block - contains link to About page -->
     {% block footer_block %}
     <footer>
-        <a href="{% url 'glasgo:about' %}">About Us</a>
+        <div class="row">
+            <div class="mx-auto">
+                <a href="{% url 'glasgo:about' %}">About Us</a>
+            </div>
+        </div>
     </footer>
     {% endblock %}
 </div>
