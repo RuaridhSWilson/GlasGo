@@ -20,9 +20,14 @@ from django.conf.urls.static import static
 
 from glasgo import views
 
+
 urlpatterns = [
-    path("", views.HomeView.as_view(), name="home"),
     path("glasgo/", include("glasgo.urls")),
     path("accounts/", include("registration.backends.simple.urls")),
     path("admin/", admin.site.urls),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+try:
+    urlpatterns = [path("", views.HomeView.as_view(), name="home")] + urlpatterns
+except AttributeError:
+    pass  # allows this file to be imported when the database doesn't exist
